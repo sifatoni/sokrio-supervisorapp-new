@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/Supervisor App - Delivery.html" },
+    { "source": "/delivery", "destination": "/Supervisor App - Delivery.html" }
+  ]
+}
