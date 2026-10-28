@@ -33,6 +33,12 @@ input,textarea,select{font-family:inherit;color:var(--txt)}
 .review summary::-webkit-details-marker{display:none}
 .review summary::after{content:"দেখুন ▾";margin-left:auto;font-size:12px;color:var(--pri)}
 .review[open] summary::after{content:"লুকান ▴"}
+.lng{display:inline-flex;border-radius:4000px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(79,70,229,.35);margin-left:4px}
+.lng button{height:30px;padding:0 12px;font:600 12px 'Anek Bangla',sans-serif;color:var(--pri);background:transparent}
+.lng button.on{background:var(--pri);color:#fff}
+html[lang=en] .review summary::after{content:"Show ▾"}
+html[lang=en] .review[open] summary::after{content:"Hide ▴"}
+html[lang=en] .qrbox.flash::after{content:"✓ Scanned — new QR"}
 .rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:12px}
 .rgrid h4{font-size:13px;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:6px}
 .rgrid h4 i{width:9px;height:9px;border-radius:3px;display:inline-block}
@@ -647,6 +653,11 @@ label.fl{display:block;font-size:9px;color:#9ca3af;margin:12px 0 4px}
 .search.sm{padding:8px 12px;gap:8px;margin-bottom:8px}
 .search.sm input{font-size:13px;height:22px}
 .search.sm .mic{display:flex;color:#9ca3af}
+.sect.rfd{margin-bottom:4px}
+.rfdt{flex:1;min-width:0;display:flex;align-items:center;gap:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rfdt b{flex:0 0 auto;font-size:11px;font-weight:700;line-height:18px;color:#fff;background:var(--pri);border-radius:4000px;padding:0 7px}
+.sect.rfd .fbtn{flex:0 0 auto;height:28px}
+.rfdh{margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fbar{display:flex;align-items:center;gap:6px;margin-bottom:8px;font-size:12px;color:#7a7a7a}
 .fbar>span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fbtn{display:inline-flex;align-items:center;gap:4px;height:30px;padding:0 10px;border-radius:4px;background:rgba(255,255,255,.6);color:#7a7a7a;font-size:12px;font-weight:500;white-space:nowrap}
@@ -762,6 +773,9 @@ label.fl{display:block;font-size:9px;color:#9ca3af;margin:12px 0 4px}
 /* POS invoice feed (Figma 1036:3491) */
 .posbg{position:absolute;inset:0;z-index:60;display:flex;flex-direction:column;gap:10px;padding:24px 16px 0;background:rgba(246,246,246,.3);backdrop-filter:blur(12.5px);-webkit-backdrop-filter:blur(12.5px)}
 .posall{display:flex;gap:10px;flex:0 0 auto}
+.poshd{display:flex;align-items:center;gap:8px;flex:0 0 auto;height:32px;margin-top:-12px}
+.poshd button{display:flex;align-items:center;justify-content:center;width:32px;height:32px;margin-left:-4px;color:#313131}
+.poshd b{font:700 16px/1 'Anek Bangla',sans-serif;color:#313131}
 .posall button{flex:1;height:40px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:4px;font:600 14px 'Anek Bangla',sans-serif}
 .posall .o,.ivb .o{background:rgba(255,255,255,.6);color:#7445ed}
 .posall .f{background:rgba(79,70,229,.5);color:#fff}
@@ -777,7 +791,7 @@ label.fl{display:block;font-size:9px;color:#9ca3af;margin:12px 0 4px}
 .ivb button svg{width:12px;height:12px}
 .ivb .f{background:#7445ed;color:#fff}
 .ivp{padding:4px;border-radius:4000px;font:700 10px/1.2 'Anek Bangla',sans-serif}
-.ivp.ap{background:#e3f1ff;color:#7445ed}.ivp.dl{background:#dcf7e8;color:#086239}
+.ivp.ap{background:#e3f1ff;color:#7445ed}.ivp.pn{background:#fff2c9;color:#8a5a00}.ivp.rj{background:#ffe3e3;color:#c62828}.ivp.dl{background:#dcf7e8;color:#086239}
 .ivh{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;width:100%}
 .ivh b{font-size:18px}.ivh span{font-size:14px}
 .ivd{width:100%;border-top:.5px dashed #333;padding-top:2px}
@@ -787,7 +801,30 @@ label.fl{display:block;font-size:9px;color:#9ca3af;margin:12px 0 4px}
 .ivk b{flex:1;text-align:right;word-break:break-all}.ivk b.n{font-weight:400}
 .ivtt{font-size:14px;font-weight:700;text-align:center;width:100%}
 .ivr{display:grid;grid-template-columns:14px 34px 46px 40px 40px 1fr;column-gap:2px;width:100%;font-size:12.5px}
-.ivc.chl .ivr{grid-template-columns:14px 30px 32px 36px 56px 1fr}
+.ivc.chl .ivr{grid-template-columns:12px 30px 30px 40px 58px 1fr;font-size:14px}
+/* CHALLAN SUMMARY v2 (Figma 1036:3748): grey total bands, Return Details block */
+.ivc.chl{gap:8px}
+.ivc.chl .ivh{font-size:14px}.ivc.chl .ivh b{font-size:14px}.ivc.chl .ivh b.cht{font-size:18px;letter-spacing:0}
+.ivc.chl .ivk b{word-break:normal;overflow-wrap:anywhere}
+.chtb{width:100%;display:flex;flex-direction:column;gap:2px}
+.chtb .ivtt{margin-bottom:2px}
+.chs{display:flex;justify-content:space-between;align-items:flex-start;padding:8px 0;border-top:1px dashed #878787;background:rgba(135,135,135,.2);font:700 12px/1.2 'Anek Bangla',sans-serif;color:#313131}
+.chs em{font-style:normal;font-size:11px;white-space:nowrap}
+.chs .r{color:#ff4d50}.chs .g{color:#26a400}
+.chs.nv{display:block}.chs.nv .ivr{font-family:'Times New Roman',Times,serif;font-weight:400;line-height:normal;color:#333}
+.chrt{display:flex;flex-direction:column;gap:2px;background:#e9ebcf;font-family:'Anek Bangla',sans-serif;color:#313131}
+.chrh{padding:8px 0;border-top:1px dashed #878787;border-bottom:1px dashed #878787;text-align:center;font-weight:700;font-size:12px;line-height:1.2}
+.chrr{display:grid;grid-template-columns:16px 81px 61px 53px 1fr;align-items:center;min-height:23px;font-size:10px}
+.chrr.h{min-height:25px;font-size:11px;font-weight:500}
+.chrr span{padding:2px 0;text-align:center;white-space:nowrap}.chrr span:first-child{text-align:left}.chrr span:last-child{text-align:right}
+.chri{display:flex;flex-direction:column}
+.chri+.chri{border-top:1px dashed #878787;padding-top:2px}
+.chrn{display:flex;align-items:flex-start}
+.chrn>b{flex:0 0 16px;font-size:12px;line-height:1.2}
+.chrn div{display:flex;flex-direction:column;min-width:0}
+.chrn div b{font-size:12px;line-height:1.2}
+.chrn small{font-size:10px;line-height:1.2;color:#878787}
+.chtb .ivw{padding:2px 0}
 .ivr span{text-align:center;padding:2px 0;white-space:nowrap}.ivr span:last-child{text-align:right}
 .ivr.h{border-top:.5px dashed #333;padding-top:4px}
 .ivi{width:100%;border-top:.5px dashed #333;padding:4px 0 2px}
@@ -955,7 +992,7 @@ label.fl{display:block;font-size:9px;color:#9ca3af;margin:12px 0 4px}
 .oh1{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .oh1 b{font-size:15px;font-weight:600;color:var(--pri);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .oh1 .icbtn{width:28px;height:28px}
-.oh2{display:flex;gap:10px;font-size:11.5px;line-height:1.35;color:#7a7a7a;white-space:nowrap;overflow:hidden}
+.oh2{display:flex;flex-wrap:wrap;column-gap:10px;row-gap:2px;font-size:11.5px;line-height:1.35;color:#7a7a7a;white-space:nowrap;overflow:hidden}
 .oh2 span,.oh2 a{display:inline-flex;align-items:center;gap:3px;min-width:0}
 .oh2 svg{color:var(--pri);flex:0 0 auto}
 .oh2 .tel{color:var(--pri);text-decoration:none}
@@ -1017,6 +1054,7 @@ label.fl{display:block;font-size:9px;color:#9ca3af;margin:12px 0 4px}
   <span>ফোন:</span>
   <select id="dev"><option value="360,800">Android · Figma (360×800)</option><option value="412,915">Galaxy S25 Ultra (412×915)</option><option value="440,956">iPhone 16 Pro Max (440×956)</option></select>
   <button id="reset">নতুন করে শুরু</button>
+  <span class="lng notr" role="group" aria-label="Language"><button id="lng-en" type="button">EN</button><button id="lng-bn" type="button">বাংলা</button></span>
 </div>
 <details class="review">
   <summary>রিভিউ: SR App-এর Delivery থেকে কী নেওয়া হলো, Supervisor-এর জন্য কী যোগ হলো</summary>
@@ -1040,9 +1078,7 @@ label.fl{display:block;font-size:9px;color:#9ca3af;margin:12px 0 4px}
       <li>অর্ডার অন্য SR-কে দেওয়া (ডেলিভারির দায়িত্ব বদল)</li>
       <li>ডেলিভারির সময় পরিমাণ কমানো যায় — কারণ বাধ্যতামূলক; ডিবি স্টক দেখায়; অফার নিজে হিসাব হয়</li>
       <li>ডিবিতে স্টক কম: একটা প্রোডাক্টের মোট খোলা চাহিদা ডিবি স্টকের চেয়ে বেশি হলে সব অর্ডারে সতর্কতা — কে আগে পাবে তা ঠিক নেই, যেটা আগে ডেলিভারি হয় সেটা পায়</li>
-      <li>টাকা সংগ্রহ একই স্ক্রিনে: ক্যাশ / বিকাশ / নগদ / ব্যাংক / চেক, বাকি ও ক্রেডিট লিমিট সতর্কতা</li>
       <li>ইনভয়েস প্রিভিউ, ব্লুটুথ প্রিন্ট, শেয়ার, "পরের অর্ডার"</li>
-      <li>ডেলিভারির পরে বাকি আদায় — অর্ডার খুলে "বাকি আদায় করুন"; প্রতিটি পেমেন্ট আলাদা দেখায়</li>
     </ol></div>
     <div><h4><i style="background:var(--warn)"></i>SR App-এর যে সমস্যা ঠিক করা হলো</h4><ol>
       <li>কার্ডে Order Code আর S.Order Code একই নম্বর দুবার — এখন একবার</li>
@@ -1051,12 +1087,6 @@ label.fl{display:block;font-size:9px;color:#9ca3af;margin:12px 0 4px}
       <li>"Edit Order" আলাদা ছিল — এখন ডেলিভারির কার্টেই পরিমাণ ঠিক করা যায়</li>
       <li>দশমিক পরিমাণ "12.0" — এখন "১২ পিস · ১ কার্টন"</li>
       <li>Manager App-এর ইতিহাসে "Order Id: 6ad442f2…" (ভেতরের আইডি) — এখন S.Order কোড; টাকা "14400.000" — এখন ৳১৪,৪০০</li>
-    </ol></div>
-    <div><h4><i style="background:var(--err)"></i>সিদ্ধান্ত বাকি (ব্যাকএন্ড)</h4><ol>
-      <li>Supervisor কি টিমের যেকোনো অর্ডার নিজে ডেলিভারি দিতে পারবেন, নাকি শুধু নিজের? (এখানে: পারবেন)</li>
-      <li>অন্য SR-কে অর্ডার দেওয়ার API নেই — নতুন লাগবে</li>
-      <li>SR-কে রিমাইন্ডার পুশ নোটিফিকেশন — নতুন লাগবে</li>
-      <li>ক্রেডিট লিমিট পার হলে ডেলিভারি আটকাবে নাকি শুধু সতর্কতা? (এখানে: সতর্কতা)</li>
     </ol></div>
   </div>
 </details>
@@ -1206,11 +1236,14 @@ function build(){
       if(st!=='rejected'&&st!=='waiting'&&(stage>=3||st!=='pending'))x.ev.push({t:new Date(+od+36e5*18),k:'পথে',d:'গাড়িতে উঠেছে'});
       if(st==='deliveryRejected'||st==='returnBack'){x.drej={r:pick(['দোকান বন্ধ','টাকা নেই','মাল চায় না']),by:u.id,t:new Date(+od+864e5)};x.ev.push({t:x.drej.t,k:'দোকান নেয়নি',d:x.drej.r+' · '+nm(u)});}
       if(st==='returnBack'){x.rb={by:u.id,t:new Date(+od+864e5+36e5*4)};x.ev.push({t:x.rb.t,k:'ফেরত গেছে',d:'মাল '+DBS[u.db].n+'-এ ফেরত'});}
-      if(st==='waiting')x.ev.push({t:new Date(+od+36e5),k:'পেন্ডিং',d:'ডিবির অনুমোদনের অপেক্ষায় · '+DBS[u.db].n});
-      if(st==='delivered'){var part=R()<.18;x.items.forEach(function(it,ix){it.d=(part&&ix===0)?Math.max(0,it.q-Math.ceil(it.q/3)):it.q;if(it.d<it.q)it.why='দোকান কম নিল';});x.partial=part;x.dt=new Date(+od+(a===0?36e5*3:864e5));x.by=u.id;var net=calc(x,true).net;x.col=R()<.7?net:Math.round(net*.5/10)*10;x.pays=x.col?[{t:x.dt,amt:x.col,m:pick(['cash','cash','bkash','nagad']),by:u.id}]:[];x.ev.push({t:x.dt,k:part?'আংশিক ডেলিভারি':'ডেলিভার্ড',d:'দিয়েছেন '+nm(u)+' · সংগ্রহ '+tk(x.col)});}
+      if(st==='waiting')x.ev.push({t:new Date(+od+36e5),k:'পেন্ডিং',d:'অনুমোদনের অপেক্ষায় · '+DBS[u.db].n});
+      if(st==='delivered'){var part=R()<.18;x.items.forEach(function(it,ix){it.d=(part&&ix===0)?Math.max(0,it.q-Math.ceil(it.q/3)):it.q;if(it.d<it.q)it.why='দোকান কম নিল';});x.partial=part;x.dt=new Date(+od+(a===0?36e5*3:864e5));x.by=u.id;var net=calc(x,true).net;x.col=R()<.7?net:Math.round(net*.5/10)*10;x.pays=x.col?[{t:x.dt,amt:x.col,m:pick(['cash','cash','bkash','nagad']),by:u.id}]:[];x.ev.push({t:x.dt,k:part?'আংশিক ডেলিভারি':'ডেলিভার্ড',d:'দিয়েছেন '+nm(u)});}
       ORD.push(x);
     }
   });
+  /* returns the SR already took at the outlet ride along with some accepted orders (shown on the challan's Return Details) */
+  ORD.forEach(function(x){if(x.st!=='pending'||x.id%2)return;var W=['মেয়াদ শেষ','ড্যামেজ','ভুল প্রোডাক্ট','বিক্রি হয়নি'];
+    x.ret=[{p:PR[x.id%PR.length].id,q:2+x.id%5,why:W[x.id%4]}];if(x.id%4===0)x.ret.push({p:PR[(x.id+3)%PR.length].id,q:1+x.id%3,why:W[(x.id+1)%4]});});
   /* older deliveries (7-29 days) so the history has something to show */
   people.forEach(function(u){
     var outs=OUT.filter(function(o){return o.sr===u.id}),n=u===ME?3:ri(5,8);
@@ -1219,7 +1252,7 @@ function build(){
       var od=dAgo(a,ri(9,17),ri(0,59)),x={id:++oid,code:'2C4S'+o.no+'B'+ymd(od)+'09',out:o.id,sr:u.id,db:u.db,at:od,st:'delivered',stage:3,items:items,ret:[],ev:[],partial:false};
       x.dt=new Date(+od+864e5+36e5*ri(0,5));x.by=u.id;var net=calc(x,true).net;x.col=R()<.72?net:Math.round(net*pick([0,.4,.6])/10)*10;
       x.pays=x.col?[{t:x.dt,amt:x.col,m:pick(['cash','cash','bkash','nagad','bank']),by:u.id}]:[];
-      x.ev.push({t:od,k:'নতুন অর্ডার',d:'অর্ডার নিয়েছেন '+nm(u)});x.ev.push({t:x.dt,k:'ডেলিভার্ড',d:'দিয়েছেন '+nm(u)+' · সংগ্রহ '+tk(x.col)});
+      x.ev.push({t:od,k:'নতুন অর্ডার',d:'অর্ডার নিয়েছেন '+nm(u)});x.ev.push({t:x.dt,k:'ডেলিভার্ড',d:'দিয়েছেন '+nm(u)});
       ORD.push(x);}
   });
   /* make the demo show every attention case */
@@ -1265,7 +1298,7 @@ function qtyTxt(q,p){var c=Math.floor(q/p.c),r=q%p.c;return bn(q)+' পিস'+(
 /* ---------- derived ---------- */
 var STN={pending:'এক্সেপটেড',delivered:'ডেলিভার্ড',deliveryRejected:'রিজেক্টেড',returnBack:'ফেরত গেছে',rejected:'অনুমোদন হয়নি',waiting:'পেন্ডিং'};
 var STC={pending:'var(--pri)',delivered:'var(--okt)',deliveryRejected:'#c2410c',returnBack:'#7c3aed',rejected:'var(--err)',waiting:'#b7791f'};
-var STORDER=['pending','waiting','delivered','deliveryRejected','returnBack','rejected'];
+var STORDER=['pending','waiting','delivered','deliveryRejected'];
 /* DB stock vs all open orders of that DB. Any order may be delivered first, so we don't predict
    who gets it: every open order holding a product whose total demand > stock is "at risk". */
 var ALLOC=null,SHORT=null,RISK=null;
@@ -1284,7 +1317,7 @@ function creditOver(o){if(o.st!=='pending')return false;var x=outlet(o.out);retu
 var ATT=[
  {k:'old',t:'৩ দিনের বেশি পেন্ডিং',s:'দোকান অপেক্ষায়',c:'var(--err)',b:'rgba(255,207,208,.6)',ic:'clock',f:function(o){return o.st==='pending'&&ago(o.at)>=3}},
  {k:'stock',go:'gostock',t:'ডিবিতে স্টক কম',s:'পুরো পরিমাণ দেওয়া যাবে না',c:'var(--warnt)',b:'#fff2c9',ic:'box',f:stockShort},
- {k:'credit',t:'ক্রেডিট লিমিট পার হবে',s:'বাকি সংগ্রহ করে ডেলিভারি দিন',c:'var(--warnt)',b:'#fff2c9',ic:'card',f:creditOver},
+ {k:'credit',t:'ক্রেডিট লিমিট পার হবে',s:'আগের বাকি + এই অর্ডার লিমিটের বেশি',c:'var(--warnt)',b:'#fff2c9',ic:'card',f:creditOver},
  {k:'drej',t:'দোকান ডেলিভারি নেয়নি',s:'ফেরত বা আবার চেষ্টা বাকি',c:'#c2410c',b:'rgba(255,237,213,.9)',ic:'store',f:function(o){return o.st==='deliveryRejected'}},
  {k:'rej',t:'ডিবি অনুমোদন করেনি',s:'SR-কে জানান',c:'var(--err)',b:'rgba(255,207,208,.6)',ic:'x',f:function(o){return o.st==='rejected'}},
  {k:'partial',t:'আংশিক ডেলিভারি',s:'দোকান কম নিয়েছে',c:'#7a7a7a',b:'rgba(255,255,255,.6)',ic:'split',f:function(o){return o.st==='delivered'&&o.partial}}];
@@ -1306,7 +1339,7 @@ function tierC(p){return p>=80?'var(--ok)':p>=50?'var(--warnt)':'var(--err)'}
 
 /* ---------- state ---------- */
 function fresh(){return {tab:1,view:'dhome',stack:[],scope:'team',range:'yday',grp:'sr',
-  list:{st:'pending',q:'',sel:false,picked:{},f:{sr:[],db:[],rt:[]},sort:'old',attn:null,srOnly:null},
+  list:{st:'pending',q:'',db:'',sr:'',rt:'',sel:false,picked:{},f:{sr:[],db:[],rt:[]},sort:'old',attn:null,srOnly:null},
   hist:{q:'',pay:'all',mode:'del',srOnly:null},team:{q:'',sort:'low',n:20,db:'',sr:'',rt:''},home:{db:'',sr:'',rt:'',showF:false,sel:false,picked:{},n:10},cr:null,oid:null,cart:null,sheet:null,draft:null,offline:false,canCancel:true,queue:[],srv:null,srSt:'pending',last:null,bulk:null}}
 S=fresh();build();
 
@@ -1345,10 +1378,10 @@ function heroHtml(all,act,cur){
 }
 /* home list: open orders, filtered by DB / SR / Route dropdowns (Figma "স্টক" page pattern) */
 function homeOrders(all){var H=S.home;return all.filter(function(o){return o.st==='pending'&&(!H.db||o.db===H.db)&&(!H.sr||o.sr===H.sr)&&(!H.rt||outlet(o.out).rt===H.rt)}).sort(sorter('old'))}
-function ddF(){return S.ddctx==='team'?S.team:S.home}
+function ddF(){return S.ddctx==='team'?S.team:S.ddctx==='list'?S.list:S.home}
 /* people who match the other two selections (k = the dropdown being opened) */
-function ddPeople(k,H){var me=S.ddctx!=='team'&&S.scope==='me';
-  return (me?[ME]:SRS).filter(function(u){return (k==='db'||!H.db||u.db===H.db)&&(k==='sr'||!H.sr||u.id===H.sr)&&(k==='rt'||!H.rt||u.routes.indexOf(H.rt)>-1)})}
+function ddPeople(k,H){var me=S.ddctx!=='team'&&S.scope==='me',one=S.ddctx==='list'&&S.list.srOnly;
+  return (one?[user(one)]:me?[ME]:SRS).filter(function(u){return (k==='db'||!H.db||u.db===H.db)&&(k==='sr'||!H.sr||u.id===H.sr)&&(k==='rt'||!H.rt||u.routes.indexOf(H.rt)>-1)})}
 function ddOpts(k){var H=ddF(),ps=ddPeople(k,H);
   if(k==='db'){var ds={};ps.forEach(function(u){ds[u.db]=1});return Object.keys(DBS).filter(function(d){return ds[d]}).map(function(d){return [d,DBS[d].n+' ('+d+')']});}
   if(k==='sr')return ps.map(function(u){return [u.id,nm(u)]});
@@ -1356,10 +1389,9 @@ function ddOpts(k){var H=ddF(),ps=ddPeople(k,H);
 function ddLabel(k,H){var v=(H||S.home)[k];if(!v)return 'All';if(k==='db')return DBS[v].n;if(k==='sr')return nm(user(v));return v}
 function homeList(all){
   var H=S.home,l=homeOrders(all),me=S.scope==='me',nf=(H.db?1:0)+(H.sr?1:0)+(H.rt?1:0);
-  var b='<div class="sect">ডেলিভারির জন্য প্রস্তুত</div>';
-  b+='<div class="fbar"><span>'+bn(l.length)+'টি অর্ডার দেখানো হচ্ছে</span>'+(H.sel?'<button class="fbtn" data-act="hselall">'+ico(P.check,14,2.6)+(l.every(function(o){return H.picked[o.id]})&&l.length?'সব বাদ':'সব বাছুন')+'</button>':'')+'<button class="fbtn'+(H.showF?' on':'')+'" data-act="hfilter">'+ico(P.filter,14)+'ফিল্টার'+(nf?'<i>'+bn(nf)+'</i>':'')+'</button></div>';
+  var b='<div class="sect rfd"><span class="rfdt">ডেলিভারির জন্য প্রস্তুত<b title="'+bn(l.length)+'টি অর্ডার দেখানো হচ্ছে">'+bn(l.length)+'</b></span>'+(H.sel?'<button class="fbtn" data-act="hselall">'+ico(P.check,14,2.6)+(l.every(function(o){return H.picked[o.id]})&&l.length?'সব বাদ':'সব বাছুন')+'</button>':'')+'<button class="fbtn'+(H.showF?' on':'')+'" data-act="hfilter">'+ico(P.filter,14)+(H.sel?'':'ফিল্টার')+(nf?'<i>'+bn(nf)+'</i>':'')+'</button></div>';
   if(H.showF)b+='<div class="ddg">'+[['db','ডিবি']].concat(me?[]:[['sr','SR']]).concat([['rt','রুট']]).map(function(x){return '<button class="dd'+(S.home[x[0]]?' set':'')+'" data-act="ddopen" data-k="'+x[0]+'"><span>'+x[1]+':</span><b>'+esc(ddLabel(x[0]))+'</b>'+ico(P.chev,14)+'</button>'}).join('')+'</div>';
-  if(!H.sel&&l.length)b+='<div class="hint mb8" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis"><svg width="13" height="13" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true" style="vertical-align:-2px"><path d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Z"/></svg> কার্ড চেপে ধরে বাছাই করুন — একসাথে অনেক ডেলিভারি দিন</div>';
+  if(!H.sel&&l.length)b+='<div class="hint rfdh"><svg width="13" height="13" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true" style="vertical-align:-2px"><path d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Z"/></svg> কার্ড চেপে ধরে বাছাই করুন — একসাথে অনেক ডেলিভারি দিন</div>';
   b+=l.length?'<div class="stack">'+l.slice(0,H.n).map(function(o){return ocard(o,H.sel,H.picked,'home')}).join('')+(l.length>H.n?'<div class="lazy" data-more="home"><span class="spin" style="display:flex">'+ico(P.sync,16)+'</span>আরও লোড হচ্ছে…</div>':'')+'</div>':'<div class="empty">এই ফিল্টারে ডেলিভারির জন্য প্রস্তুত কোনো অর্ডার নেই</div>';
   return b;
 }
@@ -1411,19 +1443,22 @@ function listOrders(){
   var L=S.list,base=L.srOnly?ORD.filter(function(o){return o.sr===L.srOnly}):scoped(S.scope);
   var l=base.filter(function(o){return inRange(o,S.range)});
   if(L.attn){var a=attOf(L.attn);l=l.filter(a.f);}else l=l.filter(function(o){return o.st===L.st});
+  if(L.db)l=l.filter(function(o){return o.db===L.db});if(L.sr)l=l.filter(function(o){return o.sr===L.sr});if(L.rt)l=l.filter(function(o){return outlet(o.out).rt===L.rt});
   if(L.f.sr.length)l=l.filter(function(o){return L.f.sr.indexOf(o.sr)>-1});
   if(L.f.db.length)l=l.filter(function(o){return L.f.db.indexOf(o.db)>-1});
   if(L.f.rt.length)l=l.filter(function(o){return L.f.rt.indexOf(outlet(o.out).rt)>-1});
   if(L.q){var q=L.q.toLowerCase();l=l.filter(function(o){var x=outlet(o.out),u=user(o.sr);return (x.n+' '+x.code+' '+o.code+' '+u.name+' '+u.id+' '+x.rt).toLowerCase().indexOf(q)>-1});}
   return l.sort(sorter(L.sort));
 }
+/* orders that can be bulk-selected in the list: accepted ones for delivery, any order in the other status tabs (invoice / print) */
+function selList(l){return S.list.attn?l.filter(function(o){return o.st==='pending'}):l}
 function ocard(o,selMode,picked,ctx){
   picked=picked||S.list.picked;ctx=ctx||'list';
-  var x=outlet(o.out),u=user(o.sr),v=orderVal(o),a=ago(o.at),sel=picked[o.id],can=o.st==='pending';
+  var x=outlet(o.out),u=user(o.sr),v=orderVal(o),a=ago(o.at),sel=picked[o.id],can=o.st==='pending'||(ctx==='list'&&!S.list.attn);
   var pills='';
   if(o.st==='pending')pills+=pill(a===0?'আজকের অর্ডার':bn(a)+' দিন ধরে বাকি',a>=3?'p-err':a>=1?'p-warn':'p-mute');
   if(o.st==='delivered')pills+=pill(o.partial?'আংশিক ডেলিভার্ড':'ডেলিভার্ড','p-ok')+pill(dlab(o.dt)+' · '+tm(o.dt),'p-mute');
-  if(o.st==='waiting')pills+=pill('ডিবির অনুমোদনের অপেক্ষায়','p-warn');
+  if(o.st==='waiting')pills+=pill('অনুমোদনের অপেক্ষায়','p-warn');
   if(o.st==='rejected')pills+=pill('অনুমোদন হয়নি · '+o.rej.r,'p-err');
   if(o.st==='deliveryRejected')pills+=pill('দোকান নেয়নি · '+o.drej.r,'p-err')+pill('ডিবিতে ফেরত বাকি','p-warn');
   if(o.st==='returnBack')pills+=pill('ফেরত গেছে · '+dlab(o.rb.t),'p-pri');
@@ -1440,22 +1475,23 @@ function ocard(o,selMode,picked,ctx){
 V.list=function(){
   var L=S.list,l=listOrders(),selMode=L.sel,tot=l.reduce(function(s,o){return s+orderVal(o)},0);
   var stTabs=STORDER.map(function(k){return [k,STN[k]]});
-  var base=(L.srOnly?ORD.filter(function(o){return o.sr===L.srOnly}):scoped(S.scope)).filter(function(o){return inRange(o,S.range)});
-  var top='<div class="search">'+fi('search',22)+'<input id="q" placeholder="আউটলেট, অর্ডার আইডি বা SR খুঁজুন" value="'+esc(L.q)+'" autocomplete="off"><button class="mic" data-act="filter" aria-label="ফিল্টার" style="color:var(--pri)">'+ico(P.filter,20)+'</button></div>';
+  /* DB / SR / Route dropdowns instead of search (same pattern as Home and Team); SR is fixed on one SR's page and in "my delivery" */
+  var top='<div class="ddg" style="margin-bottom:0">'+[['db','ডিবি']].concat(L.srOnly||S.scope==='me'?[]:[['sr','SR']]).concat([['rt','রুট']]).map(function(x){return '<button class="dd'+(L[x[0]]?' set':'')+'" data-act="ddopen" data-ctx="list" data-k="'+x[0]+'"><span>'+x[1]+':</span><b>'+esc(ddLabel(x[0],L))+'</b>'+ico(P.chev,14)+'</button>'}).join('')+'</div>';
   var b='';
-  if(!L.attn)b+='<div class="seg scr">'+stTabs.map(function(x){var n=base.filter(function(o){return o.st===x[0]}).length;return '<button class="'+(L.st===x[0]?'on':'')+'" data-act="lst" data-v="'+x[0]+'">'+x[1]+' <span class="cnt">'+bn(n)+'</span></button>'}).join('')+'</div>';
+  if(!L.attn)b+='<div class="seg">'+stTabs.map(function(x){return '<button class="'+(L.st===x[0]?'on':'')+'" data-act="lst" data-v="'+x[0]+'">'+x[1]+'</button>'}).join('')+'</div>';
   b+=chips(RANGES,S.range,'range');
   var fc=[];if(L.attn)fc.push(['attn',attOf(L.attn).t]);if(L.srOnly)fc.push(['sro',nm(user(L.srOnly))]);
   L.f.sr.forEach(function(v){fc.push(['sr:'+v,nm(user(v))])});L.f.db.forEach(function(v){fc.push(['db:'+v,DBS[v].n])});L.f.rt.forEach(function(v){fc.push(['rt:'+v,v])});
   if(fc.length)b+='<div class="fchips">'+fc.map(function(f){return '<span class="fchip">'+esc(f[1])+'<button data-act="rmf" data-v="'+esc(f[0])+'" aria-label="ফিল্টার সরান">'+ico(P.x,14,2.4)+'</button></span>'}).join('')+'</div>';
-  var canSel=l.filter(function(o){return o.st==='pending'});
+  var canSel=selList(l);
   var label=L.attn?attOf(L.attn).t:STN[L.st];
   b+='<div class="lhead"><span>'+label+' ('+rlabel()+'): <b>'+bn(l.length)+'</b> · '+tk(tot)+'</span>'+
     (canSel.length?(selMode?'<button class="selbtn on" data-act="selall">'+(canSel.every(function(o){return L.picked[o.id]})?'সব বাদ':'সব বাছুন')+'</button>':'<button class="selbtn" data-act="selmode">'+ico(P.check,14,2.6)+'বাছাই</button>'):'')+'</div>';
   b+=l.length?'<div class="stack">'+l.map(function(o){return ocard(o,selMode)}).join('')+'</div>':'<div class="empty">'+(L.q?'"'+esc(L.q)+'" দিয়ে কিছু পাওয়া যায়নি':'এখানে কোনো অর্ডার নেই')+'</div>';
   var foot='';
   if(selMode){var pk=Object.keys(L.picked).filter(function(k){return L.picked[k]}).map(order),sum=pk.reduce(function(s,o){return s+orderVal(o)},0);
-    foot='<div class="fsum"><span>বাছাই '+bn(pk.length)+'টি</span><b>'+tk(sum)+'</b></div><div class="ebtns"><button class="ebr" data-act="selmode">বাতিল</button><button class="ebg" data-act="bulk"'+(pk.length?'':' disabled')+'>কনফার্ম ডেলিভারি</button></div>';}
+    foot='<div class="fsum"><span>বাছাই '+bn(pk.length)+'টি</span><b>'+tk(sum)+'</b></div>'+(L.attn||L.st==='pending'?'<div class="ebtns"><button class="ebr" data-act="selmode">বাতিল</button><button class="ebg" data-act="bulk"'+(pk.length?'':' disabled')+'>কনফার্ম ডেলিভারি</button></div>':
+      '<div class="brow"><button class="btn ghost" data-act="binvoice"'+(pk.length?'':' disabled')+'>'+ico(P.note||P.box,16)+'ইনভয়েস</button><button class="btn pri" data-act="bprint"'+(pk.length?'':' disabled')+'>'+ico(P.print,16)+'প্রিন্ট</button></div>');}
   var title=L.srOnly?esc(user(L.srOnly).name)+'-এর অর্ডার':'অর্ডার লিস্ট';
   return shell({t:title,back:1,top:top,body:b,foot:foot,tab:selMode?null:1});
 };
@@ -1483,11 +1519,11 @@ V.order=function(){
   var x=outlet(o.out),u=user(o.sr),useD=o.st==='delivered',c=calc(o,useD),db=DBS[o.db];
   var b='';
   if(o.st==='rejected')b+='<div class="stbox canc">'+ico(P.x,18)+'<div><b>ডিবি অর্ডারটি অনুমোদন করেনি</b>'+esc(o.rej.r)+' · '+esc(DBS[o.db].n)+' · '+dlab(o.rej.t)+'</div></div>';
-  if(o.st==='deliveryRejected')b+='<div class="stbox canc">'+ico(P.store,18)+'<div><b>দোকান ডেলিভারি নেয়নি</b>'+esc(o.drej.r)+(o.drej.note?' — '+esc(o.drej.note):'')+' · '+esc(nm(user(o.drej.by)))+' · '+dlab(o.drej.t)+'<br>মাল এখনো ডিবিতে ফেরত যায়নি।</div></div>';
+  if(o.st==='deliveryRejected')b+='<div class="stbox canc">'+ico(P.store,18)+'<div><b>অর্ডারটি রিজেক্ট করা হয়েছে</b>রিজেক্ট করেছেন '+esc(nm(user(o.drej.by)))+' · '+dlab(o.drej.t)+'</div></div>';
   if(o.st==='returnBack')b+='<div class="stbox q" style="background:rgba(124,77,255,.1);color:#6d28d9">'+ico(P.ret,18)+'<div><b>মাল ডিবিতে ফেরত গেছে</b>দোকান নেয়নি: '+esc(o.drej.r)+' · ফেরত '+dlab(o.rb.t)+' '+tm(o.rb.t)+' · '+esc(nm(user(o.rb.by)))+'</div></div>';
-  if(o.st==='waiting')b+='<div class="stbox hold">'+ico(P.pause,18)+'<div><b>পেন্ডিং · ডিবির অনুমোদনের অপেক্ষায়</b>ডিবি অর্ডারটি এক্সেপ্ট করলে ডেলিভারি দেওয়া যাবে</div></div>';
-  if(o.st==='delivered')b+='<div class="stbox '+(o.queued?'q':'done')+'">'+ico(o.queued?P.sync:P.check,18,2.4)+'<div><b>'+(o.queued?'ডেলিভার্ড · সার্ভারে পাঠানো বাকি':o.partial?'আংশিক ডেলিভার্ড':'ডেলিভার্ড')+'</b>'+dlab(o.dt)+' '+tm(o.dt)+' · দিয়েছেন '+esc(nm(user(o.by)))+' · সংগ্রহ '+tk(o.col)+'</div></div>';
-  if(creditOver(o)){var cx=outlet(o.out);b+='<div class="stbox hold">'+ico(P.card,18)+'<div><b>ক্রেডিট লিমিট পার হবে</b>আগের বাকি '+tk(cx.due)+' + এই অর্ডার '+tk(calc(o,false).net)+' মিলে লিমিট '+tk(cx.lim)+' পার হবে। ডেলিভারির সময় বাকি সংগ্রহ করুন।</div></div>';}
+  if(o.st==='waiting')b+='<div class="stbox hold">'+ico(P.pause,18)+'<div><b>পেন্ডিং · অনুমোদনের অপেক্ষায়</b>অর্ডারটি এক্সেপ্ট করলে ডেলিভারি দেওয়া যাবে</div></div>';
+  if(o.st==='delivered')b+='<div class="stbox '+(o.queued?'q':'done')+'">'+ico(o.queued?P.sync:P.check,18,2.4)+'<div><b>'+(o.queued?'ডেলিভার্ড · সার্ভারে পাঠানো বাকি':o.partial?'আংশিক ডেলিভার্ড':'ডেলিভার্ড')+'</b>'+dlab(o.dt)+' '+tm(o.dt)+' · দিয়েছেন '+esc(nm(user(o.by)))+'</div></div>';
+  if(creditOver(o)){var cx=outlet(o.out);b+='<div class="stbox hold">'+ico(P.card,18)+'<div><b>ক্রেডিট লিমিট পার হবে</b>আগের বাকি '+tk(cx.due)+' + এই অর্ডার '+tk(calc(o,false).net)+' মিলে লিমিট '+tk(cx.lim)+' পার হবে।</div></div>';}
   if(stockShort(o)){var rk=riskOf(o);b+='<div class="stbox hold">'+ico(P.box,18)+'<div><b>ডিবিতে স্টক কম</b>'+Object.keys(rk).map(function(pid){var x=rk[pid];return esc(prod(pid).n)+': ডিবিতে '+bn(x.stock)+' পিস, '+bn(x.rows.length)+'টি খোলা অর্ডারে লাগবে '+bn(x.need)+' পিস'}).join('; ')+'। যেগুলো আগে ডেলিভারি হবে সেগুলো পাবে।</div></div>';}
   b+='<div class="card"><div class="row between"><span class="h2" style="color:var(--pri)">'+esc(x.n)+'</span>'+(x.badge!=='none'?pill(BADGE[x.badge].t,'p-warn'):'')+'</div>'+
     '<div class="xs mt4">আউটলেট '+x.code+' · '+esc(x.rt)+'</div><div class="xs mt4">'+esc(x.ad)+'</div>'+
@@ -1496,18 +1532,17 @@ V.order=function(){
     '<div class="who2 mt8">'+avatar(u,30)+'<div class="tx">অর্ডার নিয়েছেন<b>'+esc(nm(u))+'</b></div>'+(u!==ME?'<button class="icbtn ok" data-act="call" data-v="'+u.id+'" aria-label="SR-কে কল">'+ico(P.phone,16)+'</button>':'')+'</div>'+
     (o.assign?'<div class="who2"><span class="pi" style="width:30px;height:30px">'+ico(P.swap,16)+'</span><div class="tx">ডেলিভারি দেবেন<b>'+esc(o.assign)+'</b></div></div>':'')+
     '<div class="who2"><span class="pi" style="width:30px;height:30px">'+ico(P.store,16)+'</span><div class="tx">ডিস্ট্রিবিউটর<b>'+esc(db.n)+' ('+o.db+')</b></div></div></div>';
-  b+='<div class="card mt8"><div class="row between mb8"><span class="h3">অর্ডার আইডি '+o.code+'</span><span class="xs">'+dsh(o.at)+' · '+tm(o.at)+'</span></div>'+stepper(o)+'</div>';
+  b+='<div class="card mt8"><div class="row between"><span class="h3">অর্ডার আইডি '+o.code+'</span><span class="xs">'+dsh(o.at)+' · '+tm(o.at)+'</span></div></div>';
   var editing=isOpen(o);if(editing&&(!S.cart||S.cart.oid!==o.id))cartStart(o);
   b+=editing?qtyHtml():'<div class="sect">প্রোডাক্ট <span class="cnt">'+bn(o.items.length)+'টি</span></div>'+prodCards(o,useD);
   if(!editing&&o.ret&&o.ret.length)b+='<div class="sect0 mt8">সেলস রিটার্ন</div><div class="plist">'+o.ret.map(function(r){var p=prod(r.p);return '<div class="prw"'+pimgAttr(p.id)+'><div class="pt1"><b>'+esc(p.n)+'</b><em style="color:var(--err)">− '+tk(r.q*p.r)+'</em></div><div class="pt2">'+bn(r.q)+' পিস · '+esc(r.why)+'</div></div>'}).join('')+'</div>';
-  b+='<div class="sect">হিসাব</div>'+totalsHtml(editing?cartCalc():c,o,useD?o.col:null);
-  if(useD){var ps=o.pays||[];b+='<div class="sect">টাকা আদায়<span class="cnt">'+bn(ps.length)+'টি পেমেন্ট</span></div>'+(ps.length?'<div class="plist">'+ps.map(payRow).join('')+'</div>':'<div class="empty">এখনো কোনো টাকা আদায় হয়নি</div>');}
+  b+='<div class="sect">হিসাব</div>'+totalsHtml(editing?cartCalc():c,o,null);
   var foot='';
   if(o.st==='pending'){
     var ie=itemErr();foot=(ie.length?'<div class="errl" style="margin:0">'+ie[0]+'</div>':'')+goBtn('deliver','ডেলিভারি দিন · '+tk(cartCalc().net),ie.length)+'<div class="brow">'+
      '<button class="btn more" data-act="moresheet" aria-label="আরও">'+ico(P.more,20)+'</button></div>';
   }else if(o.st==='deliveryRejected'){foot='<div class="brow"><button class="btn ghost" data-act="retry">'+ico(P.sync,16)+'আবার চেষ্টা</button><button class="btn pri" data-act="returnback">'+ico(P.ret,16)+'ডিবিতে ফেরত পাঠান</button></div>';
-  }else if(o.st==='delivered'){foot=(odue(o)>0?goBtn('collectsheet','বাকি আদায় করুন · '+tk(odue(o))):'')+'<div class="brow"><button class="btn ghost" data-act="invoice">'+ico(P.note||P.box,16)+'ইনভয়েস</button><button class="btn pri" data-act="printsheet">'+ico(P.print,16)+'প্রিন্ট</button></div>';}
+  }else if(o.st==='delivered'){foot='<div class="brow"><button class="btn ghost" data-act="invoice">'+ico(P.note||P.box,16)+'ইনভয়েস</button><button class="btn pri" data-act="printsheet">'+ico(P.print,16)+'প্রিন্ট</button></div>';}
   return shell({t:'অর্ডার #'+o.id,back:1,body:b,foot:foot});
 };
 function stockPill(i,stk,q){var low=stk<q;return (low||S.cart.ss[i])?'<button class="spill'+(low?' low':'')+'" data-act="stk" data-i="'+i+'" aria-label="ডিবি স্টক">'+bn(stk)+'<small>pcs</small></button>':'<button class="spill" data-act="stk" data-i="'+i+'" aria-label="স্টক দেখুন">'+ico(P.eye,12,2.2)+'স্টক</button>'}
@@ -1517,7 +1552,7 @@ function outHead(o){var x=outlet(o.out),u=user(o.sr);
    '<div class="oh2"><span>'+ico(P.note,12)+'অর্ডার আইডি '+o.code+'</span></div>'+
    '<div class="oh2"><span>'+ico(P.team,12)+esc(nm(u))+'</span></div></div>';}
 function simBulk(pk){var st=JSON.parse(JSON.stringify(STOCK)),ok=[],skip=[];pk.slice().sort(function(a,b){return a.at-b.at}).forEach(function(o){if(o.items.every(function(it){return it.q<=st[o.db][it.p]})){o.items.forEach(function(it){st[o.db][it.p]-=it.q});ok.push(o)}else skip.push(o)});return {ok:ok,skip:skip}}
-function cartStart(o){S.cart={ss:{},invd:o.invd||0,invdNote:'',reason:'',oid:o.id,items:o.items.map(function(it){return {cd:it.cd||0,added:!!it.added,p:it.p,q:it.q,d:Math.min(it.q,STOCK[o.db][it.p]),dr:it.dr,why:STOCK[o.db][it.p]<it.q?'ডিবিতে স্টক নেই':null,risk:riskOf(o)[it.p]||null}}),ret:[],pm:'cash',amt:null,ref:''};}
+function cartStart(o){S.cart={ss:{},invd:o.invd||0,invdNote:'',reason:'',oid:o.id,items:o.items.map(function(it){return {cd:it.cd||0,added:!!it.added,p:it.p,q:it.q,d:Math.min(it.q,STOCK[o.db][it.p]),dr:it.dr,why:STOCK[o.db][it.p]<it.q?'ডিবিতে স্টক নেই':null,risk:riskOf(o)[it.p]||null}}),ret:(o.ret||[]).map(function(r){return {p:r.p,q:r.q,why:r.why}}),pm:'cash',amt:null,ref:''};}
 function cartCalc(){var C=S.cart,o=order(C.oid);return calc({out:o.out,invd:C.invd||0,items:C.items,ret:C.ret},true)}
 /* quantity can go above the ordered amount; only the DB stock caps it */
 /* filled eye for the "স্টক" pill (Figma "visibility") */
@@ -1559,7 +1594,8 @@ V.edit=function(){
   var C=S.cart,x=outlet(o.out),u=user(o.sr),c=cartCalc(),orig=calc(o,false).net;
   var b='<div class="eh"><div class="eh1"><b>'+esc(x.n)+'</b>'+pill(STN[o.st],o.st==='waiting'?'p-warn':'p-pri')+'</div>'+
    '<div class="oh2"><span>'+ico(P.store,12)+x.code+'</span><span>'+ico(P.route,12)+esc(x.rt)+'</span><a class="tel" href="#" data-act="callout">'+ico(P.phone,12)+x.ph+'</a></div>'+
-   '<div class="oh2"><span>'+ico(P.note,12)+o.code+'</span><span>'+ico(P.team,12)+esc(nm(u))+'</span><span>'+ico(P.cal,12)+dsh(o.at)+'</span></div>'+
+   '<div class="oh2"><span>'+ico(P.note,12)+o.code+'</span><span>'+ico(P.cal,12)+dsh(o.at)+'</span></div>'+
+   '<div class="oh2"><span>'+ico(P.team,12)+esc(nm(u))+'</span></div>'+
    '<div class="eh3"><div><span>প্রোডাক্ট</span><b>'+bn(C.items.filter(function(i){return i.d>0}).length)+'টি</b></div><div><span>সাব-টোটাল</span><b>'+tk(c.gross)+'</b></div><div><span>ডিসকাউন্ট</span><b>'+tk(c.disc+c.cdis+c.invd+c.badge)+'</b></div><div><span>গ্র্যান্ড টোটাল</span><b style="color:'+(c.net!==orig?'var(--pri)':'var(--txt)')+'">'+tk(c.net)+'</b></div></div></div>';
   if(stockShort(o)){var rk=riskOf(o);b+='<div class="stbox hold">'+ico(P.box,18)+'<div><b>ডিবিতে স্টক কম</b>'+Object.keys(rk).map(function(pid){var y=rk[pid];return esc(prod(pid).n)+': ডিবিতে '+bn(y.stock)+' পিস, '+bn(y.rows.length)+'টি খোলা অর্ডারে লাগবে '+bn(y.need)+' পিস'}).join('; ')+'</div></div>';}
   b+='<div class="stack mt8">'+C.items.map(function(it,i){var l=lineOf(it,true),p=l.p,stk=STOCK[o.db][it.p],pct=Math.round(it.dr*100);
@@ -1703,12 +1739,12 @@ function invoiceHtml(o){
   return '<div class="inv"><div class="ih"><b>BRAC DAIRY AND FOOD PROJECT</b>'+esc(db.n)+' ('+o.db+')<br>ইনভয়েস #INV-'+o.id+'-'+ymd(o.dt||TODAY).slice(4)+' · '+dsh(o.dt||TODAY)+'</div>'+
    '<div>'+esc(x.n)+' · '+x.code+'<br>'+esc(x.ad)+'</div><table class="mt8"><tr><th>প্রোডাক্ট</th><th class="r">পরিমাণ</th><th class="r">টাকা</th></tr>'+
    c.lines.filter(function(l){return l.q>0}).map(function(l){return '<tr><td>'+esc(l.p.n)+(l.free?' (+'+bn(l.free)+' ফ্রি)':'')+'</td><td class="r">'+bn(l.q)+'</td><td class="r">'+bn(Math.round(l.total).toLocaleString('en-IN'))+'</td></tr>'}).join('')+'</table>'+
-   '<div class="it mt8"><span>মোট</span><span>'+tk(c.gross)+'</span></div><div class="it"><span>ডিসকাউন্ট + ব্যাজ</span><span>− '+tk(c.disc+c.badge)+'</span></div>'+(c.ret?'<div class="it"><span>সেলস রিটার্ন</span><span>− '+tk(c.ret)+'</span></div>':'')+'<div class="it b"><span>নিট মোট</span><span>'+tk(c.net)+'</span></div><div class="it"><span>সংগ্রহ</span><span>'+tk(o.col)+'</span></div><div class="it"><span>বাকি</span><span>'+tk(Math.max(0,c.net-o.col))+'</span></div>'+
+   '<div class="it mt8"><span>মোট</span><span>'+tk(c.gross)+'</span></div><div class="it"><span>ডিসকাউন্ট + ব্যাজ</span><span>− '+tk(c.disc+c.badge)+'</span></div>'+(c.ret?'<div class="it"><span>সেলস রিটার্ন</span><span>− '+tk(c.ret)+'</span></div>':'')+'<div class="it b"><span>নিট মোট</span><span>'+tk(c.net)+'</span></div>'+
    '<div class="if">ডেলিভারি দিয়েছেন '+esc(nm(user(o.by)))+' · Powered by Sokrio</div></div>';
 }
 V.done=function(){
   var o=order(S.oid),x=outlet(o.out),nx=nextPending(o.id);
-  var b='<div class="donecard"><span class="okc">'+ico(o.queued?P.sync:P.check,28,3)+'</span><b>'+(o.queued?'ডেলিভারি ফোনে জমা হয়েছে':o.partial?'আংশিক ডেলিভারি সম্পন্ন':'ডেলিভারি সম্পন্ন')+'</b><span>'+esc(x.n)+' · নিট '+tk(calc(o,true).net)+' · সংগ্রহ '+tk(o.col)+'</span>'+(o.queued?'<span>ইন্টারনেট এলে নিজে থেকে পাঠানো হবে</span>':'')+'</div>';
+  var b='<div class="donecard"><span class="okc">'+ico(o.queued?P.sync:P.check,28,3)+'</span><b>'+(o.queued?'ডেলিভারি ফোনে জমা হয়েছে':o.partial?'আংশিক ডেলিভারি সম্পন্ন':'ডেলিভারি সম্পন্ন')+'</b><span>'+esc(x.n)+' · নিট '+tk(calc(o,true).net)+'</span>'+(o.queued?'<span>ইন্টারনেট এলে নিজে থেকে পাঠানো হবে</span>':'')+'</div>';
   b+='<div class="sect">ইনভয়েস</div>'+invoiceHtml(o)+'<div class="brow mt8"><button class="btn ghost" data-act="docsingle">'+ico(P.print,16)+'ইনভয়েস / চালান</button><button class="btn ghost" data-act="share">'+ico(P.share,16)+'শেয়ার</button></div>';
   var foot=(nx?goBtn('opennext','পরের অর্ডার: '+esc(outlet(nx.out).n),false,' data-id="'+nx.id+'"'):'')+'<button class="btn ghost" data-act="tolist">লিস্টে ফিরুন</button>';
   return shell({t:'ডেলিভারি সম্পন্ন',body:b,foot:foot});
@@ -1810,21 +1846,35 @@ SH.cuom=function(){var cur=S.cuom||'kg';
    '<div class="lsbt"><button class="lsk wide" data-act="cuomok">'+MSI.ok+'Confirm</button></div></div></div>';};
 /* one CHALLAN SUMMARY for all delivered orders (Figma 1036:3748); quantities shown in the chosen UoM */
 function chHTML(os,uom){var f2=function(v){return Number(v).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})},dd=function(d){d=new Date(d);return ('0'+d.getDate()).slice(-2)+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+d.getFullYear()};
-  var agg={},order2=[],srs={},outs={},rts={};
-  os.forEach(function(o){srs[o.sr]=1;outs[o.out]=1;rts[outlet(o.out).rt]=1;calc(o,true).lines.forEach(function(l){var k=l.p.id;if(!agg[k]){agg[k]={p:l.p,q:0,free:0};order2.push(k)}agg[k].q+=l.q;agg[k].free+=l.free})});
+  var agg={},order2=[],srs={},outs={},rts={},rag={},rorder=[],T={gross:0,trade:0,invd:0,badge:0,ret:0,net:0};
+  os.forEach(function(o){srs[o.sr]=1;outs[o.out]=1;rts[outlet(o.out).rt]=1;var c=calc(o,true);
+    T.gross+=c.gross;T.trade+=c.disc+c.cdis;T.invd+=c.invd;T.badge+=c.badge;T.ret+=c.ret;T.net+=c.net;
+    c.lines.forEach(function(l){var k=l.p.id;if(!agg[k]){agg[k]={p:l.p,q:0,free:0};order2.push(k)}agg[k].q+=l.q;agg[k].free+=l.free});
+    (o.ret||[]).forEach(function(r){if(!rag[r.p]){rag[r.p]={p:prod(r.p),q:0};rorder.push(r.p)}rag[r.p].q+=r.q})});
   var UL={kg:'Kg',pcs:'Pcs',lt:'Lt',mt:'MT',ctn:'CTN'}[uom];
   var unitOf=function(p){if(uom==='pcs')return 1;if(uom==='ctn')return p.c;var s=sizeOf(p),v=s?s.v:1;return uom==='mt'?v/1000:v};
-  var line=function(p,q,free){var qty=uom==='ctn'?q/p.c:q,up=uom==='ctn'?p.r*p.c:p.r;return [qty%1?qty.toFixed(2):qty,UL,unitOf(p)%1?unitOf(p).toFixed(uom==='mt'?4:2):unitOf(p).toFixed(2),f2(up),free?'0.00':f2(qty*up)]};
-  var rows=[],sl=0,tot=0;order2.forEach(function(k){var a=agg[k];if(a.q){sl++;rows.push([('0'+sl).slice(-2)+' '+a.p.n,line(a.p,a.q)]);tot+=a.q*a.p.r}if(a.free){sl++;rows.push([('0'+sl).slice(-2)+' '+a.p.n+' [FREE]',line(a.p,a.free,1)])}});
+  var fq=function(q){return q%1?q.toFixed(2):q},fu=function(u){return u.toFixed(uom==='mt'?4:2)};
+  /* per row: qty and unit in the chosen UoM; FREE rows carry no amount */
+  var rows=[],sl=0,sq=0,su=0;var add=function(p,q,free){var qty=uom==='ctn'?q/p.c:q,up=uom==='ctn'?p.r*p.c:p.r;sl++;sq+=qty;su+=unitOf(p);
+    rows.push([('0'+sl).slice(-2)+' '+p.n+(free?' [FREE]':''),[fq(qty),UL,fu(unitOf(p)),f2(up),free?'0.00':f2(qty*up)]])};
+  order2.forEach(function(k){var a=agg[k];if(a.q)add(a.p,a.q);if(a.free)add(a.p,a.free,1)});
   var db=DBS[os[0].db],us=Object.keys(srs).map(user),first=os.reduce(function(m,o){return o.at<m?o.at:m},os[0].at);
   var kv=function(k,v,n){return '<div class="ivk"><span>'+k+'<i>:</i></span><b'+(n?' class="n"':'')+'>'+esc(v)+'</b></div>'};
+  var sm=function(k,v,c){return '<div class="chs"><b>'+k+'</b><em class="'+c+'">'+v+'</em></div>'},neg=function(v){return (v?'-':'')+f2(v)};
+  var rt=rorder.length?'<div class="chrt"><div class="chrh">Return Details</div><div class="chrr h"><span>Sl</span><span></span><span>Qty</span><span>UoM</span><span>Amount</span></div>'+
+    rorder.map(function(k,i){var r=rag[k];return '<div class="chri"><div class="chrn"><b>'+('0'+(i+1)).slice(-2)+'</b><div><b>'+esc(r.p.n)+'</b><small>SKU: '+skuOf(r.p)+'</small></div></div><div class="chrr"><span></span><span></span><span>'+r.q+'</span><span>PCS</span><span>-'+f2(r.q*r.p.r)+'</span></div></div>'}).join('')+'</div>'+
+    sm('Return Value:',neg(T.ret),'r'):'';
   return '<div class="ivc chl"><button class="ivx" data-act="posclose" aria-label="বন্ধ">'+MSI.close+'</button><div class="ivb"><button class="o" data-act="posshare">'+MSI.share+'Share</button><button class="f" data-act="posprint">'+MSI.print+'Print</button></div>'+
-   '<div class="ivh"><b class="cht">CHALLAN SUMMARY</b><b>'+esc(db.n)+'</b><span>'+esc(db.n)+', '+esc(db.id)+', Dhaka<br>01711-000000</span></div>'+
+   '<div class="ivh"><b class="cht">CHALLAN SUMMARY</b><div><b>'+esc(db.n)+'</b><br>'+esc(db.n)+', '+esc(db.id)+', Dhaka<br>01711-000000</div></div>'+
    '<div class="ivd">'+kv('Order Date',dd(first))+kv('Print Date',dd(TODAY))+kv('Order By',us.map(function(u){return u.name}).join(', '))+kv('Employee ID',us.map(function(u){return u.id}).join(', '))+
    kv('Total Orders',os.length)+kv('Total Outlets',Object.keys(outs).length)+kv('Total Routes',Object.keys(rts).length)+kv('Route Name',Object.keys(rts).join(', '),1)+'</div>'+
-   '<div class="ivtt">ITEM DESCRIPTION</div><div class="ivr h"><span>Sl</span><span>Qty</span><span>UoM</span><span>Unit</span><span>Unit Price</span><span>Amount</span></div>'+
+   '<div class="chtb"><div class="ivtt">ITEM DESCRIPTION</div><div class="ivr h"><span>Sl</span><span>Qty</span><span>UoM</span><span>Unit</span><span>Unit Price</span><span>Amount</span></div>'+
    rows.map(function(r){return '<div class="ivi"><b>'+esc(r[0])+'</b><div class="ivr"><span></span>'+r[1].map(function(v){return '<span>'+v+'</span>'}).join('')+'</div></div>'}).join('')+
-   '<div class="ivt b2"><span>Total:</span><b>'+f2(tot)+'</b></div><div class="ivw">In Words : '+enWords(tot)+'</div><div class="ivs"><span>Authorized By</span><span>Received By</span></div><div class="ivf">Powered By Sokrio Technologies Ltd.</div></div>'}
+   '<div class="chs nv"><b>Net Value:</b><div class="ivr"><span></span><span>'+fq(sq)+'</span><span>'+UL+'</span><span>'+fu(su)+'</span><span></span><span>'+f2(T.gross)+'</span></div></div>'+
+   sm('Memo Discount:',neg(T.invd),'r')+sm('Badge Discount:',neg(T.badge),'r')+sm('Trade Discount:',neg(T.trade),'r')+rt+sm('Grand Total:',f2(T.net),'g')+
+   '<div class="ivw">In Words : '+enWords(T.net)+' only</div></div><div class="ivs"><span>Authorized By</span><span>Received By</span></div><div class="ivf">Powered By Sokrio Technologies Ltd.</div></div>'}
+/* demo SKU code for a product */
+function skuOf(p){return 'AD'+(652400+parseInt(p.id.slice(1),10)*437)}
 
 /* POS-style invoice feed (Figma 1036:3491): invoices rise one by one; stops with a STOCK OUT watermark at the first order the stock cannot cover */
 function enWords(n){var a=['','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'],t=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
@@ -1837,9 +1887,9 @@ function invHTML(o,state){var x=outlet(o.out),u=user(o.sr),c=calc(o,true),d=new 
     rows.push(chl?[nm2,[l.q,'Pcs','1',f2(l.p.r),f2(l.gross)]]:[nm2,[f1(l.q),f1(l.p.r),f1(l.disc+l.offer),f1(l.cd),f2(l.total)]]);
     if(l.free){sl++;rows.push([('0'+sl).slice(-2)+' '+l.p.n+'  [FREE]',chl?[l.free,'Pcs','1',f2(l.p.r),'0.00']:[f1(l.free),f1(l.p.r),'0.0','0.0','0.00']])}});
   var head=chl?['Sl','Qty','UoM','Unit','Price/Qty.','Amount']:['Sl','Qty','U.Price','P.Disc','C.Disc','Total'];
-  var pill=state==='out'?'<span class="ivp ap">Approved</span>':'<span class="ivp dl">Delivered</span>';
+  var pill=state==='out'?'<span class="ivp ap">Approved</span>':({pending:'<span class="ivp ap">Approved</span>',waiting:'<span class="ivp pn">Pending</span>',deliveryRejected:'<span class="ivp rj">Rejected</span>'}[o.st]||'<span class="ivp dl">Delivered</span>');
   var tot=chl?'<div class="ivt b2"><span>Total:</span><b>'+f2(c.gross)+'</b></div>':
-    '<div class="ivt b2"><span>Sub Total:</span><b>'+f2(c.gross-c.disc-c.cdis)+'</b></div><div class="ivt"><span>Memo Discount:</span><b>'+f2(c.invd)+'</b></div><div class="ivt"><span>Badge Discount ('+c.bp.toFixed(1)+'%):</span><b>'+f2(c.badge)+'</b></div><div class="ivt"><span>VAT (0.0%):</span><b>0.00</b></div><div class="ivt b1"><span>Grand Total:</span><b>'+f2(c.net)+'</b></div>';
+    '<div class="ivt b2"><span>Sub Total:</span><b>'+f2(c.gross-c.disc-c.cdis)+'</b></div><div class="ivt"><span>Memo Discount:</span><b>'+f2(c.invd)+'</b></div><div class="ivt"><span>Badge Discount ('+c.bp.toFixed(1)+'%):</span><b>'+f2(c.badge)+'</b></div>'+(c.ret?'<div class="ivt"><span>Sales Return:</span><b>'+f2(c.ret)+'</b></div>':'')+'<div class="ivt"><span>VAT (0.0%):</span><b>0.00</b></div><div class="ivt b1"><span>Grand Total:</span><b>'+f2(c.net)+'</b></div>';
   return '<div class="ivc'+(chl?' chl':'')+(state==='out'?' out':'')+'"><button class="ivx" data-act="posclose" aria-label="বন্ধ">'+MSI.close+'</button>'+
    '<div class="ivb"><button class="o" data-act="posshare">'+MSI.share+'Share</button><button class="f" data-act="posprint">'+MSI.print+'Print</button></div>'+pill+
    '<div class="ivh"><b>'+esc(DBS[o.db].n)+'</b><span>'+esc(DBS[o.db].n)+', '+esc(o.db)+', Dhaka<br>01711-000000</span></div>'+
@@ -1850,19 +1900,23 @@ function invHTML(o,state){var x=outlet(o.out),u=user(o.sr),c=calc(o,true),d=new 
    (state==='out'?'<div class="ivwm">STOCK OUT</div>':'')+'</div>'}
 SH.pos=function(){var Q=S.pos;
   /* Share All / Print All only when there is more than one receipt */
-  return '<div class="posbg">'+(Q.cards.length>1?'<div class="posall"><button class="o" data-act="posshare">'+MSI.share+'Share All</button><button class="f" data-act="posprint">'+MSI.print+'Print All</button></div>':'')+'<div class="posl'+(Q.done?'':' run')+'" id="posl"><div class="poslead"></div>'+Q.cards.join('')+'</div>'+
+  /* a back arrow + title on top, so leaving the receipts is obvious (the ✕ on a receipt does the same) */
+  var chl=/ivc chl/.test(Q.cards[0]);
+  return '<div class="posbg"><div class="poshd"><button data-act="posclose" aria-label="পেছনে">'+fi('back',24)+'</button><b>'+(chl?'চালান':'ইনভয়েস')+(Q.cards.length>1?' ('+bn(Q.cards.length)+')':'')+'</b></div>'+(Q.cards.length>1?'<div class="posall"><button class="o" data-act="posshare">'+MSI.share+'Share All</button><button class="f" data-act="posprint">'+MSI.print+'Print All</button></div>':'')+'<div class="posl'+(Q.done?'':' run')+'" id="posl"><div class="poslead"></div>'+Q.cards.join('')+'</div>'+
    (Q.done?'':'<button class="posskip" data-act="posskip">Skip Animation<svg width="16" height="16" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M660-240v-480h80v480h-80Zm-440 0v-480l360 240-360 240Z"/></svg></button>')+'</div>'};
 /* invoices: deliver in order until the first order the stock cannot cover */
 function posStart(){var pk=S.bulkIds.map(order).sort(function(a,b){return a.at-b.at}),st=JSON.parse(JSON.stringify(STOCK)),ok=[],stop=null;
   for(var i=0;i<pk.length;i++){var o=pk[i];if(o.items.every(function(it){return it.q<=st[o.db][it.p]})){o.items.forEach(function(it){st[o.db][it.p]-=it.q});ok.push(o)}else{stop=o;break}}
-  /* mock-up: when a stock-out is coming, show only the first 5 invoices before it so the STOCK OUT receipt appears quickly */
-  if(stop&&ok.length>5)ok=ok.slice(0,5);
-  var cards=ok.map(function(o){deliverOrder(o,null,[],null,'cash');return invHTML(o,'ok')});
-  if(stop)cards.push(invHTML(stop,'out'));
-  posRun(cards,!!stop)}
+  /* mock-up: when a stock-out is coming, deliver at most 5 first (fewer if needed so 3 are left), then the run stops —
+     the next selected orders (up to 4) roll in as STOCK OUT and stay undelivered */
+  var outs=[];
+  if(stop){ok=ok.slice(0,Math.min(ok.length,5,Math.max(1,pk.length-3)));outs=pk.filter(function(o){return ok.indexOf(o)<0}).slice(0,4);}
+  var cards=ok.map(function(o){deliverOrder(o,null,o.ret,null,'cash');return invHTML(o,'ok')});
+  outs.forEach(function(o){cards.push(invHTML(o,'out'))});
+  posRun(cards,stop?ok.length:false)}
 /* challan: same delivery rule, one CHALLAN SUMMARY of the delivered orders in the chosen UoM */
 function challanStart(uom){var pk=S.bulkIds.map(order).sort(function(a,b){return a.at-b.at}),done=[];
-  for(var i=0;i<pk.length;i++){var o=pk[i];if(o.items.every(function(it){return it.q<=STOCK[o.db][it.p]})){deliverOrder(o,null,[],null,'cash');done.push(o)}else break}
+  for(var i=0;i<pk.length;i++){var o=pk[i];if(o.items.every(function(it){return it.q<=STOCK[o.db][it.p]})){deliverOrder(o,null,o.ret,null,'cash');done.push(o)}else break}
   if(!done.length){S.sheet=null;render(true);toast('স্টক নেই — কোনো অর্ডার ডেলিভারি করা যায়নি');return;}
   posRun([chHTML(done,uom)],false)}
 /* order edit (one order → one invoice or one challan) */
@@ -1881,7 +1935,9 @@ function posRun(cards,out){
       var last=L.lastElementChild;
       /* a single receipt shorter than the screen still stops with its top at the top (no empty band above it) */
       if(cards.length===1)L.style.paddingBottom=Math.max(24,L.clientHeight-last.offsetHeight)+'px';
-      target=cards.length===1?last.offsetTop-L.offsetTop:out?last.offsetTop-L.offsetTop+last.offsetHeight/2-L.clientHeight/2:L.scrollHeight-L.clientHeight;
+      /* out = true (the last receipt) or the index of the first STOCK OUT receipt: the roll stops with it centred */
+      var oc=typeof out==='number'?L.querySelectorAll('.ivc')[out]:last;
+      target=cards.length===1?last.offsetTop-L.offsetTop:out!==false?oc.offsetTop-L.offsetTop+oc.offsetHeight/2-L.clientHeight/2:L.scrollHeight-L.clientHeight;
       if(!dur)dur=Math.max(2500,target/300*1000);   /* steady ~300 px/s with a gentle sine ease at both ends */
       ['wheel','touchstart','pointerdown'].forEach(function(ev){L.addEventListener(ev,function(){if(!stop){stop=true;end()}},{passive:true})});}
     return L};
@@ -1993,6 +2049,27 @@ SH.call=function(){var u=user(S.draft.u);return popWrap('<div class="pt">কল 
 
 /* ---------- render ---------- */
 var scr;
+/* ---------- language: Bangla (default) / English ----------
+   The screens are written in Bangla; in English mode every Bangla phrase is swapped from DICT after each render
+   (longest phrase first, whole-word only) and Bangla digits become 0-9. Page chrome keeps its Bangla original to switch back. */
+var I18N=(function(){
+  var DICT={"অর্ডারটি রিজেক্ট করা হয়েছে": "This order has been rejected", "রিজেক্ট করেছেন": "Rejected by", "আগের বাকি + এই অর্ডার লিমিটের বেশি": "Previous due + this order is over the limit", "পার হবে।": "will be exceeded.", "ডিবিতে স্টক কম: একটা প্রোডাক্টের মোট খোলা চাহিদা ডিবি স্টকের চেয়ে বেশি হলে সব অর্ডারে সতর্কতা — কে আগে পাবে তা ঠিক নেই, যেটা আগে ডেলিভারি হয় সেটা পায়": "Low DB stock: when the total open demand for a product is more than DB stock, every such order gets a warning — there is no fixed priority; whichever is delivered first gets it", "খুলুন। টিমের সব অর্ডারের ডেলিভারি এক নজরে দেখুন, কোথায় আটকে আছে বুঝুন, আর নিজেও ডেলিভারি দিন — একটা একটা করে বা একসাথে অনেকগুলো। সব তথ্য নমুনা।": "below. See your whole team’s deliveries at a glance, find where they are stuck, and deliver yourself — one by one or many at once. All data is sample data.", "স্ট্যাটাস ব্যাকএন্ডের নামে: পেন্ডিং (pending) → গৃহীত (accepted) → ডিসপ্যাচ রেডি (readyToDispatch) → পথে (ontheway) → ডেলিভার্ড (delivered)": "Statuses by backend name: Pending (pending) → Accepted (accepted) → Dispatch ready (readyToDispatch) → On the way (ontheway) → Delivered (delivered)", "এই প্রোডাক্টগুলোর ডিবি স্টক সব খোলা অর্ডারের মোট চাহিদার চেয়ে কম। যে অর্ডারগুলো আগে ডেলিভারি হবে সেগুলো পাবে, বাকিগুলোতে কম পড়বে।": "DB stock for these products is lower than the total demand of all open orders. Orders delivered first get it; the rest will fall short.", "Performance → Delivery পাতা (ডেলিভার হওয়া ইনভয়েস, আদায় ও বাকি, আজ/7/15/30 দিন, ক্যালেন্ডার) — Supervisor-এ আলাদা ইতিহাস পাতা নেই": "Performance → Delivery page (delivered invoices, collected and due, today/7/15/30 days, calendar) — Supervisor has no separate history page", "ড্যাশবোর্ড: ডেলিভারির অগ্রগতি % (মোট অর্ডারের মধ্যে ডেলিভার্ড), এক্সেপটেড/পেন্ডিং/ডেলিভার্ড/রিজেক্টেড, কালেকশন, নতুন বাকি": "Dashboard: delivery progress % (delivered out of total orders), Accepted/Pending/Delivered/Rejected, collection, new dues", "একসাথে ডেলিভারিতে প্রতিটি অর্ডারের পুরো পরিমাণ দেওয়া হয়। কম দিতে বা আলাদা পেমেন্ট নিতে হলে অর্ডার খুলে আলাদা দিন।": "Bulk delivery gives the full quantity of every order. To give less or take a separate payment, open the order and deliver it on its own.", "সাথে অনুমোদন হয়নি (rejected), দোকান নেয়নি (deliveryRejected), ফেরত গেছে (returnBack), বাতিল (cancelled)।": "plus Not approved (rejected), Shop refused (deliveryRejected), Returned (returnBack), Cancelled (cancelled).", "টাকা সংগ্রহ একই স্ক্রিনে: ক্যাশ / বিকাশ / নগদ / ব্যাংক / চেক, বাকি ও ক্রেডিট লিমিট সতর্কতা": "Payment on the same screen: Cash / bKash / Nagad / Bank / Cheque, with due and credit-limit warnings", "হোমের বাকি অংশ Supervisor App-এর Figma ডিজাইনেই আছে। এই প্রোটোটাইপে শুধু ডেলিভারি মডিউল।": "The rest of Home is in the Supervisor App Figma design. This prototype covers only the delivery module.", "আপনার রোলে ডেলিভারি বাতিলের অনুমতি দেওয়া নেই। DMS-এ রোল পারমিশন থেকে এটা চালু করতে হবে।": "Your role is not allowed to cancel deliveries. Turn it on from role permissions in DMS.", "কে এই অর্ডার পৌঁছে দেবেন? পাশে তাঁর হাতে এখন কতগুলো ডেলিভারি বাকি তা দেখানো আছে।": "Who will deliver this order? Next to each name is how many deliveries they still have.", "3 দিনের বেশি পেন্ডিং, ডিবিতে স্টক কম, ক্রেডিট লিমিট পার হবে, আংশিক ডেলিভারি": "pending over 3 days, low DB stock, credit limit exceeded, partial delivery", "রিভিউ: SR App-এর Delivery থেকে কী নেওয়া হলো, Supervisor-এর জন্য কী যোগ হলো": "Review: what was taken from the SR App Delivery, and what was added for the Supervisor", "দোকান কোনো প্রোডাক্ট ফেরত দিলে এখানে যোগ করুন — টাকা নিট থেকে বাদ যাবে।": "If the shop returns a product, add it here — the amount comes off the net.", "অর্ডারের ধাপ: পেন্ডিং → গৃহীত → প্রসেসিং → পথে → ডেলিভার্ড, টাইমলাইন": "Order steps: Pending → Accepted → Processing → On the way → Delivered, timeline", "কার্ডে Order Code আর S.Order Code একই নম্বর দুবার — এখন একবার": "Order Code and S.Order Code were the same number shown twice on the card — now once", "Sokrio One · Supervisor App · ডেলিভারি মডিউল · প্রোটোটাইপ v1": "Sokrio One · Supervisor App · Delivery module · Prototype v1", "মোট, ব্যাজ ডিসকাউন্ট, সেলস রিটার্ন, অন্যান্য ডিসকাউন্ট, নিট": "total, badge discount, sales return, other discounts, net", "খুঁজে SR বাছুন — যাঁদের বাছবেন শুধু তাঁদের অর্ডার দেখাবে": "Search and pick SRs — only the SRs you pick will have their orders shown", "ডিবিতে স্টক কম — এটা বাদ যাবে, আলাদা খুলে কম পরিমাণে দিন": "Low DB stock — this will be left out; open it separately and deliver less", "কোনো প্রোডাক্ট নেই — অন্তত একটি প্রোডাক্টের পরিমাণ দিন": "No products — enter a quantity for at least one product", "ডেলিভারি ফোনে জমা থাকবে, নেট এলে নিজে থেকে পাঠানো হবে।": "The delivery is saved on the phone and sent automatically when the internet is back.", "আলাদা ছিল — এখন ডেলিভারির কার্টেই পরিমাণ ঠিক করা যায়": "was a separate screen — now quantities can be fixed right in the delivery cart", "অফলাইনে ডেলিভারি সারিতে জমা থাকে, নেট এলে নিজে পাঠায়": "Offline deliveries wait in a queue and send themselves when the internet returns", "কার্ড চেপে ধরে বাছাই করুন — একসাথে অনেক ডেলিভারি দিন": "Long-press a card to select — deliver many at once", "ডেলিভারির সময় পরিমাণ কমানো যায় — কারণ বাধ্যতামূলক": "Quantities can be reduced at delivery — a reason is required", "এই ফিল্টারে ডেলিভারির জন্য প্রস্তুত কোনো অর্ডার নেই": "No orders ready for delivery in this filter", "SR / ডিবি / রুট অনুযায়ী অগ্রগতি — কম অগ্রগতি আগে": "Progress by SR / DB / Route — lowest progress first", "অর্ডার অন্য SR-কে দেওয়া (ডেলিভারির দায়িত্ব বদল)": "Give an order to another SR (change who delivers)", "অর্ডারটি এক্সেপ্ট করলে ডেলিভারি দেওয়া যাবে": "It can be delivered once the order is accepted", "বাতিল করা অর্ডার আর ডেলিভারি দেওয়া যাবে না। SR": "A cancelled order can no longer be delivered. SR", "একসাথে ডেলিভারি (Bulk Deliver) — বাছাই করুন বা": "Bulk delivery (Bulk Deliver) — select, or", "টি অর্ডার ডেলিভারি বাকি। আজকের মধ্যে শেষ করুন।": " orders still to deliver. Please finish them today.", "পরিবর্তনের কারণ (যেমন: দোকান কম নিল, স্টক নেই)": "Reason for the change (e.g. shop took less, no stock)", "অর্ডার কত দিন পুরনো বোঝা যেত না — এখন রঙিন পিল": "You could not tell how old an order was — now a coloured pill", "কার্ডে SR-এর নাম ছিল না — এখন নাম (কোড) ও রুট": "The SR name was missing on the card — now name (code) and route", "সব খোলা অর্ডারের জন্য ডিবিতে যথেষ্ট স্টক আছে": "The DB has enough stock for all open orders", "SR-এর পাতা: তাঁর সব অর্ডার, রিমাইন্ডার পাঠান": "SR page: all their orders, send a reminder", "পেন্ডিং অর্ডার লিস্ট, সার্চ, তারিখের রেঞ্জ,": "Pending order list, search, date range,", "ক্রেডিট লিমিট পার হবে — টাকা সংগ্রহ করে নিন": "Credit limit will be exceeded — collect payment", "স্টক নেই — কোনো অর্ডার ডেলিভারি করা যায়নি": "No stock — no order could be delivered", "ইনভয়েস প্রিভিউ, ব্লুটুথ প্রিন্ট, শেয়ার,": "Invoice preview, Bluetooth print, share,", "পার হবে। ডেলিভারির সময় বাকি সংগ্রহ করুন।": "will be exceeded. Collect the due at delivery.", "একই ডিস্ট্রিবিউটরের SR-দেরই দেখানো হচ্ছে।": "Showing only SRs of the same distributor.", "প্রোডাক্টের পরিমাণ, রেট, ডিসকাউন্ট, অফার": "Product quantity, rate, discount, offer", "পিস — এখানে দিলে অন্য অর্ডারে কম পড়বে।": " pcs — giving it here will leave other orders short.", "ইনভয়েসে পরিমাণ কোন এককে দেখাবে, বাছুন।": "Choose the unit to show quantities in on the invoice.", "SR App থেকে রাখা হয়েছে (একই ব্যাকএন্ড)": "Kept from the SR App (same backend)", "DELIVER NOW / HOLD (বাতিল বলে কিছু নেই)": "DELIVER NOW / HOLD (there is no cancel)", "ডেলিভারির পরে বাকি আদায় — অর্ডার খুলে": "Collect dues after delivery — open the order and tap", "। যেগুলো আগে ডেলিভারি হবে সেগুলো পাবে।": ". Orders delivered first get it.", "অর্ডার হোল্ড করা হয়েছে · আবার চেষ্টা": "Order put on hold · retry", "মাল নিয়ে গেছেন, কিন্তু দোকান নিল না": "Goods were taken, but the shop did not accept them", "পেন্ডিং · অনুমোদনের অপেক্ষায়": "Pending · waiting for approval", "ইন্টারনেট এলে নিজে থেকে পাঠানো হবে": "Will be sent automatically when the internet is back", "খুঁজে নিন — ডিবি, আউটলেট, এমপ্লয়ি": "Search — DB, outlet, employee", "এই ইনভয়েসে ডিসকাউন্ট দিন / বদলান?": "Give / change a discount on this invoice?", "অর্ডারে কেন পরিবর্তন করছেন, লিখুন।": "Write why you are changing the order.", "সব অর্ডারের মাল একসাথে — লোডিং শিট": "Goods for all orders together — loading sheet", "টি ডেলিভারি সার্ভারে পাঠানো হয়েছে": " deliveries sent to the server", "এই প্রোটোটাইপে শুধু ডেলিভারি মডিউল": "This prototype covers only the delivery module", "অর্ডার আবার ডেলিভারির জন্য পেন্ডিং": "Order is pending delivery again", "আউটলেট, অর্ডার আইডি বা SR খুঁজুন": "Search outlet, order ID or SR", "ডেলিভার্ড · সার্ভারে পাঠানো বাকি": "Delivered · not yet sent to server", "এখানে দিলে অন্য অর্ডারে কম পড়বে": "Giving it here will leave other orders short", "সংগ্রহ করলে লিমিটের মধ্যে থাকবে।": "Collecting will keep it within the limit.", "(ভেতরের আইডি) — এখন S.Order কোড": "(internal ID) — now the S.Order code", "মাল প্যাক হয়ে গাড়ির জন্য তৈরি": "Goods packed and ready for the vehicle", "বাকির চেয়ে বেশি নেওয়া যাবে না": "Cannot collect more than the due", "টি প্রোডাক্ট অর্ডারে যোগ হয়েছে": " products added to the order", "SR App-এর যে সমস্যা ঠিক করা হলো": "SR App problems that were fixed", "এই অর্ডার অন্য কেউ পৌঁছে দেবেন": "Someone else will deliver this order", "পুরো টাকা ক্যাশে সংগ্রহ হয়েছে": "Full amount collected in cash", "প্রতিটি দোকানের আলাদা ইনভয়েস": "A separate invoice for each shop", "যেমন: মালিক বিকেল 4টায় আসবেন": "e.g. the owner comes at 4 pm", "মাল ডিবিতে ফেরত পাঠানো হয়েছে": "Goods sent back to the DB", "ইনভয়েস PDF শেয়ার করা হচ্ছে…": "Sharing invoice PDF…", "প্রতিটি পেমেন্ট আলাদা দেখায়": "each payment is shown separately", "টিম / আমার — দুই দৃষ্টিভঙ্গি": "Team / Mine — two views", "বাকি সংগ্রহ করে ডেলিভারি দিন": "Collect the due and deliver", "মাল এখনো ডিবিতে ফেরত যায়নি।": "The goods have not gone back to the DB yet.", "ট্রানজেকশন / রেফারেন্স নম্বর": "Transaction / reference number", "-কে রিমাইন্ডার পাঠানো হয়েছে": " — reminder sent", "24 পিস বা বেশি নিলে 5% ছাড়": "5% off on 24 pcs or more", "অনুমোদনের অপেক্ষায় ·": "Waiting for approval ·", "ডিবি অর্ডারটি অনুমোদন করেনি": "The DB did not approve the order", "✓ স্ক্যান হয়েছে — নতুন QR": "✓ Scanned — new QR", "পুরো পরিমাণ দেওয়া যাবে না": "The full quantity cannot be given", "প্রোডাক্ট ডিসকাউন্ট ও অফার": "Product discount and offer", "এখনো কোনো টাকা আদায় হয়নি": "No money collected yet", "এই সময়ে কোনো ডেলিভারি নেই": "No deliveries in this period", "শাহ আলী মার্কেট, মিরপুর 1": "Shah Ali Market, Mirpur 1", "অনুমোদনের অপেক্ষায়": "Waiting for approval", "বাদ গেছে — ডিবিতে স্টক কম": "Left out — low DB stock", "Supervisor App — ডেলিভারি": "Supervisor App — Delivery", "পেন্ডিং ডেলিভারি (7 দিন)": "Pending deliveries (7 days)", "SR-এর নাম বা কোড লিখুন (": "Type SR name or code (", "দিয়ে কিছু পাওয়া যায়নি": " — nothing found", "— ডানে টেনে নিশ্চিত করুন": "— slide right to confirm", "ফেরত বা আবার চেষ্টা বাকি": "Return or retry pending", "আজকের ডেলিভারি · অগ্রগতি": "Today’s delivery · progress", "এই সময়ে কোনো অর্ডার নেই": "No orders in this period", "ডেলিভারি ফোনে জমা হয়েছে": "Delivery saved on the phone", "দাম বা অফার নিয়ে আপত্তি": "Objection over price or offer", "টি ডেলিভারি পাঠানো বাকি": " deliveries waiting to be sent", "টি অর্ডার ডেলিভারি বাকি": " orders still to deliver", "ডেলিভারির জন্য প্রস্তুত": "Ready for delivery", "ডিবির স্টকের চেয়ে বেশি": "More than DB stock", "নতুন প্রোডাক্ট যোগ করুন": "Add a new product", "ডেলিভারির পর বাকি থাকবে": "Due after delivery", "টাকা নিন ও নিশ্চিত করুন": "Take payment and confirm", "এই সময়ে কোনো আদায় নেই": "No collections in this period", "ভুল প্রোডাক্ট বা পরিমাণ": "Wrong product or quantity", "অন্য SR-কে ডেলিভারি দিন": "Deliver via another SR", "ডেলিভারি নিশ্চিত করবেন?": "Confirm delivery?", "ব্লুটুথ প্রিন্টার বাছুন": "Choose a Bluetooth printer", "সেলস রিটার্ন যোগ হয়েছে": "Sales return added", "Supervisor-এর জন্য নতুন": "New for the Supervisor", "Manager App-এর ইতিহাসে": "In the Manager App history", "টি অর্ডার দেখানো হচ্ছে": " orders shown", "আংশিক ডেলিভারি সম্পন্ন": "Partial delivery done", "দোকান এখন নিতে চায় না": "Shop doesn’t want it now", "আবার কবে চেষ্টা করবেন?": "When will you try again?", "দোকান স্থায়ীভাবে বন্ধ": "Shop closed permanently", "টি অর্ডার ডেলিভারি দিন": " orders — deliver", "ডেলিভারি দেওয়া হচ্ছে…": "Delivering…", "ডেলিভারির দায়িত্ব বদল": "Change who delivers", "ইন্টারনেট নেই (অফলাইন)": "No internet (offline)", "ক্রেডিট লিমিট পার হবে": "Credit limit will be exceeded", "দোকান ডেলিভারি নেয়নি": "Shop refused the delivery", "এখানে কোনো অর্ডার নেই": "No orders here", "টি খোলা অর্ডারে লাগবে": " open orders need", "কেন কম? (বাধ্যতামূলক)": "Why less? (required)", "মোট ইনভয়েস ডিসকাউন্ট": "Total invoice discount", "ডেলিভারি নিশ্চিত করুন": "Confirm delivery", "অর্ডার আবার পেন্ডিং-এ": "Order back to pending", "টিমে সব SR-এর অর্ডার": "all SRs’ orders in Team", "3 দিনের বেশি পেন্ডিং": "Pending over 3 days", "মাল ডিবিতে ফেরত গেছে": "Goods returned to the DB", "পুরো টাকা বাকি থাকবে": "Full amount stays due", "অফার নিজে হিসাব হয়": "offers are calculated automatically", "মা আনোয়ারা টি স্টল": "Ma Anowara Tea Stall", "শাপলা জেনারেল স্টোর": "Shapla General Store", "শেওড়াপাড়া, মিরপুর": "Shewrapara, Mirpur", "অর্ডার vs. ডেলিভারি": "Order vs. Delivery", "রেফারেন্স নম্বর দিন": "Enter the reference number", "প্রমোশনাল প্রোডাক্ট": "Promotional product", "এ্যাটেন্ডেন্স দেখুন": "View attendance", "কোন প্রোডাক্ট ফেরত?": "Which product is returned?", "টি অর্ডার ডেলিভার্ড": " orders delivered", "কম দেওয়া প্রোডাক্ট": "Products given short", "হ্যাঁ, ডেলিভারি দিন": "Yes, deliver", "রিমাইন্ডার পাঠাবেন?": "Send a reminder?", "অর্ডার বাতিল হয়েছে": "Order cancelled", "বিসমিল্লাহ টি স্টল": "Bismillah Tea Stall", "ডিবি অনুমোদন করেনি": "DB did not approve", "কিছু পাওয়া যায়নি": "Nothing found", "টাকা নেই, পরে নেবে": "No money, will take later", "দোকান নিতে চায় না": "Shop doesn’t want it", "বাতিলের অনুমতি নেই": "Not allowed to cancel", "আদায় নিশ্চিত করুন": "Confirm collection", "ডিবিতে ফেরত পাঠান": "Send back to DB", "12 পিস · 1 কার্টন": "12 pcs · 1 carton", "অর্ডার বাতিল করুন": "Cancel order", "আল্লাহর দান স্টোর": "Allahr Dan Store", "পল্লবী, মিরপুর 12": "Pallabi, Mirpur 12", "কাজীপাড়া, মিরপুর": "Kazipara, Mirpur", "সেক্টর 10, উত্তরা": "Sector 10, Uttara", "দোকানের বাকি বেশি": "Shop due is high", "ইনভয়েস ডিসকাউন্ট": "Invoice discount", "বাকি আদায় করুন ·": "Collect due ·", "ডিসকাউন্ট + ব্যাজ": "Discount + badge", "ডেলিভারি দিয়েছেন": "delivered", "নোটিফিকেশন পাবেন।": "will get a notification.", "এই ইনভয়েসের বাকি": "Due on this invoice", "-কে দেওয়া হয়েছে": " — assigned", "শেয়ার করা হচ্ছে…": "Sharing…", "-এ প্রিন্ট হচ্ছে…": " — printing…", "ডিবি স্টক দেখায়": "shows DB stock", "ডেলিভারির পরিমাণ": "Delivery quantity", "কনফার্ম ডেলিভারি": "Confirm Delivery", "রিটার্ন যোগ করুন": "Add return", "12 পিসে 1টি ফ্রি": "Buy 12 pcs, get 1 free", "সেক্টর 7, উত্তরা": "Sector 7, Uttara", "দোকান কম নিয়েছে": "Shop took less", "ডিবিতে ফেরত বাকি": "Return to DB pending", "কাস্টম ডিসকাউন্ট": "Custom discount", "ডিবিতে আছে মাত্র": "DB has only", "অর্ডারে যোগ করুন": "Add to order", "ডেলিভারি সম্পন্ন": "Delivery complete", "দাম নিয়ে আপত্তি": "Price objection", "পুরনো অর্ডার আগে": "Oldest order first", "ডুপ্লিকেট অর্ডার": "Duplicate order", "টাকার পরিমাণ দিন": "Enter the amount", "দোকানের মোট বাকি": "Shop total due", "বাকি আদায় করুন": "Collect due", "যেমন: TXN8H2K19": "e.g. TXN8H2K19", "সংগ্রহের পরিমাণ": "Collection amount", "শুধু এই ইনভয়েস": "This invoice only", "রহমান ট্রেডার্স": "Rahman Traders", "জননী ভ্যারাইটিজ": "Janani Varieties", "পল্লবী 2য় পর্ব": "Pallabi Phase 2", "দক্ষিণখান বাজার": "Dakshinkhan Bazar", "অর্ডার নিয়েছেন": "Order taken by", "ডিবিতে স্টক নেই": "No stock in DB", "দোকান অপেক্ষায়": "Shop waiting", "আংশিক ডেলিভার্ড": "Partially delivered", "অনুমোদন হয়নি ·": "Not approved ·", "ব্যাজ ডিসকাউন্ট": "Badge discount", "কম দিলে − চাপুন": "Press − to give less", "গ্র্যান্ড টোটাল": "Grand total", "মেট্রিক টন (MT)": "Metric ton (MT)", "ইনভয়েস / চালান": "Invoice / Challan", "ডেলিভারি ইতিহাস": "Delivery history", "মাপের একক বাছুন": "Choose the unit", "নতুন অর্ডার আগে": "Newest order first", "গাড়ি পৌঁছায়নি": "Vehicle did not arrive", "বিস্তারিত লিখুন": "Write details", "আউটলেটে কল করুন": "Call the outlet", "একসাথে ডেলিভারি": "Bulk delivery", "ফোনে জমা হয়েছে": "Saved on the phone", "ডেমো নিয়ন্ত্রণ": "Demo controls", "আদায়ের পরিমাণ": "Collected amount", "নিউ মডেল স্টোর": "New Model Store", "আজমপুর, উত্তরা": "Azampur, Uttara", "আংশিক ডেলিভারি": "Partial delivery", "ডিবিতে স্টক কম": "Low DB stock", "আরও লোড হচ্ছে…": "Loading more…", "টি — খুঁজে নিন": " — search", "টিমের ডেলিভারি": "Team delivery", "দোকান নেয়নি ·": "Shop refused ·", "ডেলিভারি দেবেন": "Will deliver", "ডেলিভারি দিন ·": "Deliver ·", "· প্রযোজ্য নয়": "· not applicable", "টি প্রোডাক্ট ·": " products ·", "· দেখানো হচ্ছে": "· showing", "P. ছাড় ও অফার": "P. Disc. & offer", "ডকুমেন্ট বাছুন": "Choose document", "অন্য SR-কে দিন": "Give to another SR", "প্রিন্ট হচ্ছে…": "Printing…", "— এখন ৳14,400": "— now ৳14,400", "ফেরতের পরিমাণ": "Return quantity", "ইনভয়েস মূল্য": "Invoice value", "হক ভ্যারাইটিজ": "Haque Varieties", "ভাই ভাই স্টোর": "Bhai Bhai Store", "অনুমোদন হয়নি": "Not approved", "ডিসপ্যাচ রেডি": "Dispatch ready", "গাড়িতে উঠেছে": "Loaded on the vehicle", "পাঠানো হচ্ছে…": "Sending…", "নোটিশ ব্যানার": "Notice banner", "আমার ডেলিভারি": "My delivery", "ক্রেডিট লিমিট": "Credit limit", "ডিস্ট্রিবিউটর": "Distributor", "remaining · ৳": "remaining · ৳", "ইন্টারনেট নেই": "No internet", "ইনভয়েস #INV-": "Invoice #INV-", "আদায়ের হিসাব": "Collection summary", "টিমের অগ্রগতি": "Team progress", "মন্তব্য লিখুন": "Write a comment", "বেশি টাকা আগে": "Highest amount first", "SR-কে কল করুন": "Call SR", "ভুল প্রোডাক্ট": "Wrong product", "হোল্ড তুলেছেন": "Hold lifted by", "নতুন করে শুরু": "Start over", "নিচের ট্যাবে": "Open the tab", "দোকান নেয়নি": "Shop refused", "করতে পারবেন।": "is possible.", "এক ট্যাপে কল": "one-tap call", "দশমিক পরিমাণ": "Decimal quantity", "ফিল্টার সরান": "Remove filter", "দোকান কম নিল": "Shop took less", "আজকের অর্ডার": "Today’s order", "দিন ধরে বাকি": " days pending", "টি প্রোডাক্ট": " products", "অর্ডার লিস্ট": "Order list", "সেলস রিটার্ন": "Sales return", "অর্ডার বাতিল": "Cancel order", "কার্টন (CTN)": "Carton (CTN)", "চালান সামারি": "Challan summary", "পার হবে। আরও": "will be exceeded. More", "লিস্টে ফিরুন": "Back to list", "প্রয়োগ করুন": "Apply", "ইনভয়েস ছাড়": "Invoice disc.", "নোট (ঐচ্ছিক)": "Note (optional)", "অর্ডার হোল্ড": "Hold order", "ম্যাপে দেখুন": "View on map", "বিক্রি হয়নি": "Not sold", "ডেলিভারি হবে": "To deliver", "আবার পেন্ডিং": "Pending again", "-কে দিয়েছেন": " — handed over", "আদায় হয়েছে": "Collected", "আবার চেষ্টা": "Retry", "পরের অর্ডার": "Next order", "তারিখ বাছুন": "Pick a date", "আগের বাকিসহ": "Including previous due", "মদিনা স্টোর": "Madina Store", "বন্ধু স্টোর": "Bondhu Store", "ফারুক স্টোর": "Faruk Store", "সালাম স্টোর": "Salam Store", "নতুন অর্ডার": "New order", "মাল চায় না": "Doesn’t want the goods", "SR-কে জানান": "Tell the SR", "পুরো বাকি ·": "Full due ·", "তারিখ মুছুন": "Clear date", "ফেরত গেছে ·": "Returned ·", "পাঠানো বাকি": "Not sent yet", "+ এই অর্ডার": "+ this order", "অর্ডার আইডি": "Order ID", "পুরোটা বাকি": "All due", "অর্ডার এডিট": "Edit order", "যে কোন কিছু": "anything", "খোঁজা মুছুন": "Clear search", "অর্ডারে আছে": "In the order", "টাকা সংগ্রহ": "Collect payment", "খোলা অর্ডার": "Open orders", "কেন নেয়নি?": "Why refused?", "ইনভয়েস নিট": "Invoice net", "মনোযোগ দিন": "Attention", "C. Disc. ৳": "C. Disc. ৳", "স্টক দেখুন": "View stock", "লাকী স্টোর": "Lucky Store", "সততা স্টোর": "Sotota Store", "আমিন স্টোর": "Amin Store", "বাড্ডা নগর": "Badda Nagar", "দোকান বন্ধ": "Shop closed", "নোটিফিকেশন": "Notifications", "ড্যাশবোর্ড": "Dashboard", "মোট অর্ডার": "Total orders", "অর্ডার নেই": "No orders", "-এর অর্ডার": "’s orders", "অর্ডার ছিল": "Ordered", "· দিয়েছেন": "· gave", "মিলে লিমিট": "together, limit", "টাকা আদায়": "Collect money", "টি পেমেন্ট": " payments", "আউটলেটে কল": "Call outlet", "+ যোগ করুন": "+ Add", "লিটার (Lt)": "Liter (Lt)", "সব প্রিন্ট": "Print all", "এই ইনভয়েস": "This invoice", "-এর ইতিহাস": "’s history", "রিমাইন্ডার": "Reminder", "নিশ্চিতকরণ": "Confirmation", "ব্যাজ ছাড়": "Badge disc.", "কেন হোল্ড?": "Why hold?", "হোল্ড করুন": "Hold", "ভুল অর্ডার": "Wrong order", "কেন বাতিল?": "Why cancel?", "মেয়াদ শেষ": "Expired", "(ফোনে জমা)": "(saved on phone)", "বাকি আদায়": "Collect due", "আবার পথে ·": "On the way again ·", "টি ইনভয়েস": " invoices", "আগের বাকি": "Previous due", "ডিবি স্টক": "DB stock", "ডিসকাউন্ট": "Discount", "পুরো বাকি": "Full due", "তাজ স্টোর": "Taj Store", "ফেরত গেছে": "Returned", "ডেলিভার্ড": "Delivered", "এক্সেপটেড": "Accepted", "রিজেক্টেড": "Rejected", "সব অর্ডার": "All orders", "টি অর্ডার": " orders", "প্রোডাক্ট": "Product", "মেয়াদ কম": "Near expiry", "অন্য কারণ": "Other reason", "নগদ (MFS)": "Nagad (MFS)", "সাব-টোটাল": "Sub-total", "খুঁজে নিন": "Search", "ব্র্যান্ড": "Brand", "লিস্ট ভিউ": "List view", "গ্রিড ভিউ": "Grid view", "পিস (Pcs)": "Pieces (Pcs)", "কেজি (KG)": "Kilogram (KG)", "সব শেয়ার": "Share all", "ইনভয়েস (": "Invoice (", "· রিটার্ন": "· return", "চেক নম্বর": "Cheque number", "মালিক নেই": "Owner absent", "আজ বিকেলে": "This afternoon", "আবার দেখি": "Will see again", "আগে আদায়": "Collect first", "কানেক্টেড": "Connected", "কাছেই আছে": "Nearby", "কল করবেন?": "Call?", "-এ ফেরত ·": " — returned ·", "ডেলিভারি": "Delivery", "অর্ডারটি": "The order", "হবে। পরে": ". Later you can choose", "কল হচ্ছে": "Calling", "আগের মাস": "Previous month", "পরের মাস": "Next month", "SR-কে কল": "Call SR", "লট/ব্যাচ": "Lot/Batch", "টাকা নেই": "No money", "দিয়েছেন": "gave", "· সংগ্রহ": "· collected", "পরিশোধিত": "Paid", "জয়েন কল": "Join call", "সব বাছুন": "Select all", "খুঁজুন (": "Search (", "বাকি রইল": "Due left", "অর্ডার #": "Order #", "· অর্ডার": "· order", "%  |  -৳": "%  |  -৳", "পিস বেশি": " pcs more", "বাকি আছে": "Due", "সব মুছুন": "Clear all", "আগামীকাল": "Tomorrow", "2 দিন পর": "In 2 days", "(ঐচ্ছিক)": "(optional)", "সংগ্রহ (": "Collection (", "দেখুন ▾": "Show ▾", "লুকান ▴": "Hide ▴", "কল করুন": "Call", "প্রদেয়": "Payable", "দিন আগে": " days ago", "সন্ধ্যা": "Evening", "ভুল দাম": "Wrong price", "-এ ফেরত": " — returned", "পেন্ডিং": "Pending", "ফিল্টার": "Filter", "স্টক কম": "Low stock", "দিচ্ছেন": "giving", "ইনভয়েস": "Invoice", "প্রিন্ট": "Print", "ড্যামেজ": "Damage", "সাজেশনস": "Suggestions", "নিট মোট": "Net total", "গতকাল ·": "Yesterday ·", "কনফার্ম": "Confirm", "ঠিক আছে": "OK", "C. ছাড়": "C. Disc.", "টি বাকি": " due", "কত পিস?": "How many pcs?", "পরিমাণ": "Quantity", "বাড়ান": "Increase", "খুঁজুন": "Search", "হয়েছে": "done", "ডিবিতে": "In DB", "ফেব্রু": "Feb", "এপ্রিল": "Apr", "সেপ্টে": "Sep", ", ঢাকা": ", Dhaka", "কার্টন": "Carton", "15 দিন": "15 days", "30 দিন": "30 days", "সব বাদ": "Clear all", "সংগ্রহ": "Collect", "অফার −": "Offer −", "· ফেরত": "· return", "আউটলেট": "Outlet", "ব্যাংক": "Bank", "পিস কম": " pcs less", "শেয়ার": "Share", "চাহিদা": "Demand", "হচ্ছে…": "…", "— এখন": "— now", "অফারস": "Offers", "দেখান": "Show", "আপনার": "Your", "হাজার": "K", "মার্চ": "Mar", "জুলাই": "Jul", "আগস্ট": "Aug", "অক্টো": "Oct", "গতকাল": "Yesterday", "দুপুর": "Noon", "বিকেল": "Afternoon", "দোকান": "Shop", "গৃহীত": "Accepted", "7 দিন": "7 days", "পেছনে": "Back", "দেখুন": "View", "বাছুন": "Choose", "বাছাই": "Select", "বাতিল": "Cancel", "জন SR": " SRs", "পিস ·": " pcs ·", "ম্যাপ": "Map", "হিসাব": "Summary", "ক্যাশ": "Cash", "বিকাশ": "bKash", "টি কম": " less", "ফ্রি)": " free)", "· নিট": "· net", "টিমের": "Team", "আদায়": "Collection", "আংশিক": "Partial", "লাগবে": "need", "চালান": "Challan", "সাজান": "Sort", "মঙ্গল": "Tue", "শুক্র": "Fri", "পাঠান": "Send", "মেসেজ": "Message", "হোল্ড": "Hold", "বাংলা": "বাংলা", "টাকা": "Taka", "কমান": "Decrease", "সরান": "Remove", "জানু": "Jan", "ডিসে": "Dec", "সকাল": "Morning", "বাকি": "Due", "বন্ধ": "Closed", "ডিবি": "DB", "অফার": "Offer", "ছাড়": "Off", "ফ্রি": "Free", "পিস,": " pcs,", "স্টক": "Stock", "নতুন": "New", "পণ্য": "Products", "মেনু": "Menu", "আজ ·": "Today ·", "আমার": "Mine", "টি ·": " ·", "কারণ": "Reason", "শুরু": "Start", "বৃহঃ": "Thu", "টি)": ")", "জন)": " people)", "ফোন": "Phone", "লাখ": "lakh", "জুন": "Jun", "নভে": "Nov", "পথে": "On the way", "মাল": "Goods", "পিস": "pcs", "হোম": "Home", "আরও": "More", "রুট": "Route", "টিম": "Team", "মোট": "Total", "চেক": "Cheque", "রেট": "Rate", "নিট": "Net", "নোট": "Note", "শেষ": "Done", "সোম": "Mon", "বুধ": "Wed", "শনি": "Sat", "রবি": "Sun", "বা": "or", "সব": "All", "লট": "Lot", "মে": "May", "আজ": "Today", "টি": "", "কম": "less", "কল": "Call", "৳": "৳"},BD='০১২৩৪৫৬৭৮৯',ks=Object.keys(DICT);
+  var esc=function(t){return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')};
+  var RX=new RegExp('(?<![\\u0980-\\u09FF])('+ks.map(esc).join('|')+')(?![\\u0980-\\u09FF])','g');
+  var lang='bn';try{lang=localStorage.getItem('sup_lang2')||'bn'}catch(e){}
+  function tr(t){if(!/[\u0980-\u09FF]/.test(t))return t;t=t.replace(/[০-৯]/g,function(d){return BD.indexOf(d)});return t.replace(RX,function(m){return DICT[m]})}
+  function apply(root){if(!root)return;
+    var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){return n.parentNode&&n.parentNode.closest&&n.parentNode.closest('.notr,script,style')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT}}),n,list=[];
+    while(n=w.nextNode())if(/[\u0980-\u09FF]/.test(n.nodeValue))list.push(n);
+    /* write only when the text really changes \u2014 otherwise the change watcher would loop forever */
+    list.forEach(function(n){var v=tr(n.nodeValue);if(v!==n.nodeValue){if(n._bn==null)n._bn=n.nodeValue;n.nodeValue=v}});
+    root.querySelectorAll('[placeholder],[aria-label],[title],input[value]').forEach(function(el){if(el.closest('.notr'))return;
+      ['placeholder','aria-label','title'].forEach(function(a){var v=el.getAttribute(a),t;if(v&&/[\u0980-\u09FF]/.test(v)&&(t=tr(v))!==v){el['_bn_'+a]=el['_bn_'+a]||v;el.setAttribute(a,t)}});
+      if(el.tagName==='INPUT'&&/[০-৯]/.test(el.value)&&document.activeElement!==el)el.value=tr(el.value)})}
+  function restore(root){var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),n;while(n=w.nextNode())if(n._bn!=null){n.nodeValue=n._bn;n._bn=null}
+    root.querySelectorAll('[placeholder],[aria-label],[title]').forEach(function(el){['placeholder','aria-label','title'].forEach(function(a){if(el['_bn_'+a]){el.setAttribute(a,el['_bn_'+a]);el['_bn_'+a]=null}})})}
+  return {get lang(){return lang},tr:tr,apply:apply,restore:restore,set:function(l){lang=l;try{localStorage.setItem('sup_lang2',l)}catch(e){}}};
+})();
 function render(keep){
   ALLOC=null;
   var bd=scr.querySelector('.bd'),st=bd?bd.scrollTop:0,same=keep;
@@ -2000,6 +2077,7 @@ function render(keep){
   if(S.sheet)h+=SH[S.sheet]();
   h+='<div class="toast" id="toast"></div>';
   scr.innerHTML=h;
+  if(I18N.lang==='en')I18N.apply(scr);
   fitCnts();
   if(same){var nb=scr.querySelector('.bd');if(nb)nb.scrollTop=st;var sh=scr.querySelector('.sheet');if(sh&&S._shs)sh.scrollTop=S._shs;}
 }
@@ -2024,7 +2102,7 @@ function deliverOrder(o,items,ret,col,pm){
   o.items.forEach(function(it){if(it.d==null)it.d=it.q;if(it.d<it.q&&!it.why)it.why='দোকান কম নিল';STOCK[o.db][it.p]-=it.d;});
   o.ret=ret||[];o.partial=o.items.some(function(it){return it.d<it.q});o.st='delivered';o.dt=new Date(TODAY);o.by=ME.id;
   var net=calc(o,true).net;o.col=col==null?net:col;var x=outlet(o.out);x.due=Math.max(0,x.due+net-o.col);o.pays=o.col?[{t:o.dt,amt:o.col,m:pm||'cash',by:ME.id}]:[];
-  o.ev.push({t:o.dt,k:o.partial?'আংশিক ডেলিভারি':'ডেলিভার্ড',d:'দিয়েছেন '+nm(ME)+' · সংগ্রহ '+tk(o.col)});
+  o.ev.push({t:o.dt,k:o.partial?'আংশিক ডেলিভারি':'ডেলিভার্ড',d:'দিয়েছেন '+nm(ME)});
   if(S.offline){o.queued=true;S.queue.push(o.id);}
 }
 function flushQueue(){if(!S.queue.length||S.offline)return;render(true);setTimeout(function(){var n=S.queue.length;S.queue.forEach(function(id){order(id).queued=false});S.queue=[];render(true);toast(bn(n)+'টি ডেলিভারি সার্ভারে পাঠানো হয়েছে');},1400);}
@@ -2037,10 +2115,10 @@ var A={
  scope:function(e){S.scope=e.dataset.v;S.home.db='';S.home.sr='';S.home.rt='';S.home.sel=false;S.home.picked={};render(true)},
  range:function(e){S.range=e.dataset.v;render(true)},
  grp:function(e){S.grp=e.dataset.v;if(S.team)S.team.n=20;render(true)},
- golist:function(e){var L=S.list;L.st=e.dataset.st;L.attn=null;L.srOnly=null;L.sel=false;L.picked={};L.q='';go('list')},
- goattn:function(e){var L=S.list;L.attn=e.dataset.v;L.srOnly=null;L.sel=false;L.picked={};L.q='';go('list')},
+ golist:function(e){var L=S.list;L.st=e.dataset.st;L.attn=null;L.srOnly=null;L.sel=false;L.picked={};L.q='';L.db=L.sr=L.rt='';go('list')},
+ goattn:function(e){var L=S.list;L.attn=e.dataset.v;L.srOnly=null;L.sel=false;L.picked={};L.q='';L.db=L.sr=L.rt='';go('list')},
  gosr:function(e){S.srv=e.dataset.v;S.srSt='pending';go('sr')},
- gogrp:function(e){var L=S.list,v=e.dataset.v;L.st='pending';L.attn=null;L.srOnly=null;L.q='';L.f={sr:[],db:[],rt:[]};if(S.grp==='db')L.f.db=[v];else L.f.rt=[v];go('list')},
+ gogrp:function(e){var L=S.list,v=e.dataset.v;L.st='pending';L.attn=null;L.srOnly=null;L.q='';L.f={sr:[],db:[],rt:[]};L.db=L.sr=L.rt='';if(S.grp==='db')L.db=v;else L.rt=v;go('list')},
  srst:function(e){S.srSt=e.dataset.v;render(true)},
  lst:function(e){S.list.st=e.dataset.v;S.list.sel=false;S.list.picked={};render(true)},
  rmf:function(e){var v=e.dataset.v,L=S.list;if(v==='attn')L.attn=null;else if(v==='sro')L.srOnly=null;else{var p=v.split(':');L.f[p[0]]=L.f[p[0]].filter(function(x){return x!==p.slice(1).join(':')})}render(true)},
@@ -2050,7 +2128,7 @@ var A={
  selmode:function(){S.list.sel=!S.list.sel;S.list.picked={};render(true)},
  pick:function(e){var id=e.dataset.id,P2=e.dataset.ctx==='home'?S.home.picked:S.list.picked;P2[id]=!P2[id];render(true)},
  lpick:function(e){var id=e.dataset.id,home=e.dataset.ctx==='home',T=home?S.home:S.list;T.sel=true;T.picked[id]=true;render(true);if(navigator.vibrate)try{navigator.vibrate(30)}catch(x){}},
- selall:function(){var l=listOrders().filter(function(o){return o.st==='pending'}),all=l.every(function(o){return S.list.picked[o.id]});S.list.picked={};if(!all)l.forEach(function(o){S.list.picked[o.id]=true});render(true)},
+ selall:function(){var l=selList(listOrders()),all=l.every(function(o){return S.list.picked[o.id]});S.list.picked={};if(!all)l.forEach(function(o){S.list.picked[o.id]=true});render(true)},
  filter:function(){var L=S.list;S.draft={sr:L.f.sr.slice(),db:L.f.db.slice(),rt:L.f.rt.slice(),sort:L.sort};S.sheet='filter';render(true)},
  ftog:function(e){var k=e.dataset.k,v=e.dataset.v,a=S.draft[k],i=a.indexOf(v);if(i>-1)a.splice(i,1);else a.push(v);render(true)},
  fsort:function(e){S.draft.sort=e.dataset.v;render(true)},
@@ -2088,6 +2166,9 @@ var A={
  assignsheet:function(){S.sheet='assign';render(true)},
  doassign:function(e){var o=order(S.oid),u=user(e.dataset.v);o.assign=nm(u);o.ev.push({t:new Date(TODAY),k:'ডেলিভারির দায়িত্ব বদল',d:nm(u)+'-কে দিয়েছেন '+nm(ME)});S.sheet=null;render(true);toast('অর্ডারটি '+nm(u)+'-কে দেওয়া হয়েছে')},
  /* bulk confirm first asks which document to make (Invoice / Challan), then continues the delivery flow */
+ binvoice:function(){var L=S.list,pk=Object.keys(L.picked).filter(function(k){return L.picked[k]}).map(order).sort(function(a,b){return a.at-b.at});if(!pk.length)return;
+   S.bulkDoc=null;posRun(pk.map(function(o){return invHTML(o,'ok')}),false)},
+ bprint:function(){if(!Object.keys(S.list.picked).some(function(k){return S.list.picked[k]}))return;S.bulkPrint=true;S.sheet='print';render(true)},
  bulk:function(){S.bulkIds=Object.keys(S.list.picked).filter(function(k){return S.list.picked[k]});S.docctx=null;S.sheet='bdoc';render(true)},
  hbulk:function(){S.bulkIds=Object.keys(S.home.picked).filter(function(k){return S.home.picked[k]});S.docctx=null;S.sheet='bdoc';render(true)},
  /* no "একসাথে ডেলিভারি" sheet: deliver straight away (stock warning still shows first when stock is short) */
@@ -2109,7 +2190,7 @@ var A={
    var step=function(){if(S.bulk.i>=ok.length){S.list.sel=false;S.list.picked={};S.home.sel=false;S.home.picked={};render(true);return;}var o=ok[S.bulk.i];deliverOrder(o,null,[],pm==='due'?0:null,'cash');S.bulk.i++;render(true);setTimeout(step,450)};setTimeout(step,450);},
  invoice:function(){S.sheet='invoice';render(true)},
  printsheet:function(){S.sheet='print';render(true)},
- doprint:function(e){S.sheet=null;render(true);toast(e.dataset.v+'-এ প্রিন্ট হচ্ছে…')},
+ doprint:function(e){S.sheet=null;if(S.bulkPrint){S.bulkPrint=false;S.list.sel=false;S.list.picked={};}render(true);toast(e.dataset.v+'-এ প্রিন্ট হচ্ছে…')},
  share:function(){toast('ইনভয়েস PDF শেয়ার করা হচ্ছে…')},
  remind:function(){S.sheet='remind';render(true)},
  gostock:function(){S.stockOpen=0;go('stock')},
@@ -2216,6 +2297,17 @@ function init(){
     else if(t.id==='rqin'){S.draft.q=Math.max(1,parseInt(en(t.value).replace(/\D/g,'')||'1',10)||1);}
   });
   $('#offline').addEventListener('change',function(e){S.offline=e.target.checked;render(true);if(!S.offline)flushQueue();});
+  var chrome=[].slice.call(document.querySelectorAll('header.top,.ctrl,.review,.demo,.lbl'));
+  var setLang=function(l){I18N.set(l);document.documentElement.lang=l==='en'?'en':'bn';
+    $('#lng-en').classList.toggle('on',l==='en');$('#lng-bn').classList.toggle('on',l==='bn');
+    chrome.forEach(function(c){if(l==='en')I18N.apply(c);else I18N.restore(c)});render(true);};
+  $('#lng-en').addEventListener('click',function(){setLang('en')});
+  $('#lng-bn').addEventListener('click',function(){setLang('bn')});
+  setLang(I18N.lang);
+  new MutationObserver(function(ms){if(I18N.lang!=='en')return;ms.forEach(function(m){
+    var fix=function(t){var v=I18N.tr(t.nodeValue);if(v!==t.nodeValue)t.nodeValue=v};
+    if(m.type==='characterData'){if(/[\u0980-\u09FF]/.test(m.target.nodeValue))fix(m.target)}
+    else m.addedNodes.forEach(function(nd){if(nd.nodeType===1)I18N.apply(nd);else if(nd.nodeType===3&&/[\u0980-\u09FF]/.test(nd.nodeValue))fix(nd)})})}).observe(scr,{childList:true,subtree:true,characterData:true});
   $('#reset').addEventListener('click',function(){S=fresh();build();$('#offline').checked=false;render(false);});
   $('#dev').addEventListener('change',function(e){var v=e.target.value.split(',');document.documentElement.style.setProperty('--sw',v[0]+'px');document.documentElement.style.setProperty('--sh',v[1]+'px');});
   window.__D={S:function(){return S},ORD:function(){return ORD},A:A};
